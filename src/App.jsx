@@ -357,16 +357,6 @@ function App() {
               </div>
               <p className="gallery-caption">Ultra Sleek Nano Plaster</p>
             </div>
-            <div className="gallery-item">
-              <div className="gallery-image real-photo-gallery">
-                <img
-                  src="/dominic-client-blonde.png"
-                  alt="Successful Nano Plaster treatment with stylist"
-                  className="gallery-real-image"
-                />
-              </div>
-              <p className="gallery-caption">Stunning Nano Plaster Results</p>
-            </div>
           </div>
         </div>
       </section>
