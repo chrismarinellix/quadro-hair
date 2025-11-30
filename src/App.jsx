@@ -25,14 +25,13 @@ function App() {
         <div className="hero-background-image"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <div className="pulsating-orb"></div>
           <h1 className="hero-title">Transform Your Hair</h1>
           <h2 className="hero-subtitle">With Nano Plaster Technology</h2>
           <p className="hero-description">
             Experience the revolutionary formaldehyde-free keratin treatment that lasts 6-12 months
           </p>
           <div className="hero-buttons">
-            <a href="#contact" className="btn btn-primary">Book Now</a>
+            <a href="tel:95617822" className="btn btn-primary">Book Now</a>
             <a href="#about" className="btn btn-secondary">Learn More</a>
           </div>
         </div>
