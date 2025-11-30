@@ -258,13 +258,13 @@ function App() {
         </div>
       </section>
 
-      {/* Before/After Gallery */}
+      {/* Women's Transformation Gallery */}
       <section id="gallery" className="gallery">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Transformation Gallery</h2>
+            <h2 className="section-title">Women's Transformation Gallery</h2>
             <div className="title-underline"></div>
-            <p className="section-subtitle">See the remarkable results our clients achieve</p>
+            <p className="section-subtitle">See the remarkable results our female clients achieve</p>
           </div>
           <div className="gallery-grid">
             <div className="gallery-item">
@@ -316,6 +316,129 @@ function App() {
                 />
               </div>
               <p className="gallery-caption">Nano Plaster Success - Dominic & Client</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/women-blue-hair.png"
+                  alt="Vibrant blue ombre hair color"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Vibrant Blue Ombre</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/women-teal-hair.png"
+                  alt="Teal colored wavy hair"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Teal Wavy Transformation</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/women-balayage.png"
+                  alt="Beautiful balayage highlights"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Gorgeous Balayage & Styling</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/women-straight-black.png"
+                  alt="Sleek straight black hair"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Ultra Sleek Nano Plaster</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/dominic-client-blonde.png"
+                  alt="Successful Nano Plaster treatment with stylist"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Stunning Nano Plaster Results</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Men's Transformation Gallery */}
+      <section id="mens-gallery" className="gallery">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Men's Transformation Gallery</h2>
+            <div className="title-underline"></div>
+            <p className="section-subtitle">Professional men's styling and grooming results</p>
+          </div>
+          <div className="gallery-grid">
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/men-styled-quiff.png"
+                  alt="Modern styled quiff with fade"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Modern Quiff & Fade</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/men-textured-crop.png"
+                  alt="Textured crop haircut"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Textured Crop Style</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/men-top-knot-fade.png"
+                  alt="Top knot with fade sides"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Top Knot with Fade</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/men-textured-fringe.png"
+                  alt="Textured fringe hairstyle"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Textured Fringe Cut</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/men-pompadour-fade.png"
+                  alt="Pompadour with fade"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Pompadour & Fade</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/men-wavy-texture.png"
+                  alt="Wavy textured medium length hair"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Wavy Textured Style</p>
             </div>
           </div>
         </div>
