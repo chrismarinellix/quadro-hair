@@ -136,7 +136,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
   z-index: 1;
 }
 
@@ -228,26 +228,26 @@ body {
 .hero-title {
   font-size: 4rem;
   font-weight: bold;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.95);
   margin-bottom: 1rem;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.9), 0 0 25px rgba(212, 175, 55, 0.6);
   animation: fadeInUp 1s ease-out;
 }
 
 .hero-subtitle {
   font-size: 2rem;
-  color: var(--primary-color);
+  color: rgba(212, 175, 55, 0.95);
   margin-bottom: 1.5rem;
   font-weight: 300;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
   animation: fadeInUp 1s ease-out 0.2s backwards;
 }
 
 .hero-description {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 2.5rem;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
   animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 
