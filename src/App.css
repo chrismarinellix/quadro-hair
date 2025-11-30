@@ -98,6 +98,20 @@ body {
   overflow: hidden;
 }
 
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/salon-interior.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  z-index: 0;
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -106,9 +120,10 @@ body {
   right: 0;
   bottom: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(139, 115, 85, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 115, 85, 0.2) 0%, transparent 50%);
   animation: shimmer 8s ease-in-out infinite;
+  z-index: 1;
 }
 
 @keyframes shimmer {
@@ -122,7 +137,8 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  z-index: 1;
 }
 
 .hero-content {
@@ -432,6 +448,21 @@ section {
   justify-content: center;
 }
 
+.about-real-image {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+  object-fit: cover;
+  max-height: 500px;
+  transition: all 0.3s ease;
+}
+
+.about-real-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
+}
+
 .image-placeholder {
   width: 100%;
   height: 400px;
@@ -646,6 +677,23 @@ tr:hover {
 .gallery-image:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.real-photo-gallery {
+  background: var(--light-bg);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.gallery-real-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 400px;
 }
 
 .before-after {

@@ -22,6 +22,7 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="hero">
+        <div className="hero-background-image"></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="pulsating-orb"></div>
@@ -77,23 +78,11 @@ function App() {
               </div>
             </div>
             <div className="about-image">
-              <div className="image-placeholder hair-science">
-                <svg viewBox="0 0 400 300" className="science-illustration">
-                  <defs>
-                    <linearGradient id="hairGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" style={{stopColor: '#8B4513', stopOpacity: 1}} />
-                      <stop offset="100%" style={{stopColor: '#D2691E', stopOpacity: 1}} />
-                    </linearGradient>
-                  </defs>
-                  <circle cx="200" cy="150" r="80" fill="url(#hairGradient)" opacity="0.3" />
-                  <circle cx="200" cy="150" r="60" fill="url(#hairGradient)" opacity="0.5" />
-                  <circle cx="200" cy="150" r="40" fill="url(#hairGradient)" opacity="0.7" />
-                  <circle cx="200" cy="150" r="20" fill="url(#hairGradient)" />
-                  <text x="200" y="240" textAnchor="middle" fill="#fff" fontSize="16" fontWeight="bold">
-                    Nano Technology
-                  </text>
-                </svg>
-              </div>
+              <img
+                src="/salon-interior.png"
+                alt="Professional salon treatment environment"
+                className="about-real-image"
+              />
             </div>
           </div>
         </div>
@@ -278,6 +267,16 @@ function App() {
             <p className="section-subtitle">See the remarkable results our clients achieve</p>
           </div>
           <div className="gallery-grid">
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/hair-portrait.png"
+                  alt="Professional hair styling and color"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Expert Hair Styling & Color</p>
+            </div>
             <div className="gallery-item">
               <div className="gallery-image before-after">
                 <div className="before-side">
