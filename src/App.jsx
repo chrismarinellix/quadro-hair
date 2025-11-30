@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
+// Quadro Hair - Nano Plaster Treatment Website
 function App() {
   const [activeTab, setActiveTab] = useState('benefits')
 
