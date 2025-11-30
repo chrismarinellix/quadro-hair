@@ -258,11 +258,11 @@ function App() {
         </div>
       </section>
 
-      {/* Women's Transformation Gallery */}
+      {/* Women's Style Gallery */}
       <section id="gallery" className="gallery">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Women's Transformation Gallery</h2>
+            <h2 className="section-title">Women's Style Gallery</h2>
             <div className="title-underline"></div>
             <p className="section-subtitle">See the remarkable results our female clients achieve</p>
           </div>
@@ -361,11 +361,11 @@ function App() {
         </div>
       </section>
 
-      {/* Men's Transformation Gallery */}
+      {/* Men's Style Gallery */}
       <section id="mens-gallery" className="gallery">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Men's Transformation Gallery</h2>
+            <h2 className="section-title">Men's Style Gallery</h2>
             <div className="title-underline"></div>
             <p className="section-subtitle">Professional men's styling and grooming results</p>
           </div>
