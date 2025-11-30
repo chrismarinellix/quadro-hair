@@ -104,11 +104,10 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/salon-interior.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.4;
+  opacity: 0.85;
   z-index: 0;
 }
 
@@ -137,7 +136,7 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
   z-index: 1;
 }
 
@@ -229,12 +228,9 @@ body {
 .hero-title {
   font-size: 4rem;
   font-weight: bold;
-  color: var(--text-light);
+  color: #ffffff;
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, #ffffff 0%, var(--accent-color) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.5);
   animation: fadeInUp 1s ease-out;
 }
 
@@ -243,13 +239,15 @@ body {
   color: var(--primary-color);
   margin-bottom: 1.5rem;
   font-weight: 300;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   animation: fadeInUp 1s ease-out 0.2s backwards;
 }
 
 .hero-description {
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 1);
   margin-bottom: 2.5rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
   animation: fadeInUp 1s ease-out 0.4s backwards;
 }
 

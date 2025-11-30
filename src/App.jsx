@@ -1,9 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
-// Quadro Hair - Nano Plaster Treatment Website
+// Quadro Hair - Looking Good Feeling Good
 function App() {
   const [activeTab, setActiveTab] = useState('benefits')
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const heroImages = [
+    '/hair-portrait.png',
+    '/women-balayage.png',
+    '/men-styled-quiff.png',
+    '/wavy-balayage.png',
+    '/women-blue-hair.png',
+    '/men-wavy-texture.png'
+  ]
+
+  // Carousel effect - change image every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) =>
+        (prevIndex + 1) % heroImages.length
+      )
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="app">
@@ -23,13 +44,19 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="hero">
-        <div className="hero-background-image"></div>
+        <div
+          className="hero-background-image"
+          style={{
+            backgroundImage: `url(${heroImages[currentImageIndex]})`,
+            transition: 'background-image 1s ease-in-out'
+          }}
+        ></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1 className="hero-title">Transform Your Hair</h1>
-          <h2 className="hero-subtitle">With Nano Plaster Technology</h2>
+          <h1 className="hero-title">Quadro Hair - Looking Good, Feeling Good</h1>
+          <h2 className="hero-subtitle">Transform Your Hair*</h2>
           <p className="hero-description">
-            Experience the revolutionary formaldehyde-free keratin treatment that lasts 6-12 months
+            *With Nano Plaster Technology - one of our premium services
           </p>
           <div className="hero-buttons">
             <a href="tel:95617822" className="btn btn-primary">Book Now</a>
