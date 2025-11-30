@@ -278,133 +278,44 @@ function App() {
               <p className="gallery-caption">Expert Hair Styling & Color</p>
             </div>
             <div className="gallery-item">
-              <div className="gallery-image before-after">
-                <div className="before-side">
-                  <svg viewBox="0 0 300 400" className="hair-illustration">
-                    <path d="M 150 50 Q 140 100 145 150 Q 142 200 148 250 Q 145 300 150 350"
-                          stroke="#8B4513" strokeWidth="30" fill="none" opacity="0.8" strokeLinecap="round"/>
-                    <path d="M 150 50 Q 160 100 155 150 Q 158 200 152 250 Q 155 300 150 350"
-                          stroke="#654321" strokeWidth="28" fill="none" opacity="0.6" strokeLinecap="round"/>
-                    <path d="M 130 70 Q 125 120 128 170 Q 125 220 130 270 Q 128 320 130 360"
-                          stroke="#A0522D" strokeWidth="25" fill="none" opacity="0.7" strokeLinecap="round"/>
-                    <path d="M 170 70 Q 175 120 172 170 Q 175 220 170 270 Q 172 320 170 360"
-                          stroke="#A0522D" strokeWidth="25" fill="none" opacity="0.7" strokeLinecap="round"/>
-                    <text x="150" y="30" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold">BEFORE</text>
-                    <text x="150" y="390" textAnchor="middle" fill="#fff" fontSize="14">Frizzy & Unmanageable</text>
-                  </svg>
-                </div>
-                <div className="after-side">
-                  <svg viewBox="0 0 300 400" className="hair-illustration">
-                    <defs>
-                      <linearGradient id="smoothGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style={{stopColor: '#D2691E', stopOpacity: 1}} />
-                        <stop offset="100%" style={{stopColor: '#8B4513', stopOpacity: 1}} />
-                      </linearGradient>
-                      <filter id="shine">
-                        <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
-                        <feOffset dx="2" dy="2" result="offsetblur"/>
-                        <feComponentTransfer>
-                          <feFuncA type="linear" slope="0.5"/>
-                        </feComponentTransfer>
-                      </filter>
-                    </defs>
-                    <path d="M 150 50 L 150 350"
-                          stroke="url(#smoothGradient)" strokeWidth="35" fill="none" strokeLinecap="round" filter="url(#shine)"/>
-                    <path d="M 130 60 L 130 350"
-                          stroke="url(#smoothGradient)" strokeWidth="32" fill="none" strokeLinecap="round" opacity="0.9"/>
-                    <path d="M 170 60 L 170 350"
-                          stroke="url(#smoothGradient)" strokeWidth="32" fill="none" strokeLinecap="round" opacity="0.9"/>
-                    <circle cx="150" cy="100" r="8" fill="#FFD700" opacity="0.6"/>
-                    <circle cx="145" cy="180" r="6" fill="#FFD700" opacity="0.5"/>
-                    <circle cx="155" cy="260" r="7" fill="#FFD700" opacity="0.6"/>
-                    <text x="150" y="30" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold">AFTER</text>
-                    <text x="150" y="390" textAnchor="middle" fill="#fff" fontSize="14">Smooth & Glossy</text>
-                  </svg>
-                </div>
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/short-bob-style.png"
+                  alt="Stylish short bob with highlights"
+                  className="gallery-real-image"
+                />
               </div>
-              <p className="gallery-caption">Curly to Straight Transformation</p>
+              <p className="gallery-caption">Modern Bob with Dimension</p>
             </div>
             <div className="gallery-item">
-              <div className="gallery-image before-after">
-                <div className="before-side">
-                  <svg viewBox="0 0 300 400" className="hair-illustration">
-                    <path d="M 100 50 Q 95 150 100 250 Q 98 325 100 370"
-                          stroke="#4A2511" strokeWidth="22" fill="none" opacity="0.6" strokeLinecap="round"/>
-                    <path d="M 120 50 Q 118 150 120 250 Q 119 325 120 370"
-                          stroke="#5C3317" strokeWidth="24" fill="none" opacity="0.7" strokeLinecap="round"/>
-                    <path d="M 140 50 Q 138 150 142 250 Q 140 325 142 370"
-                          stroke="#4A2511" strokeWidth="23" fill="none" opacity="0.65" strokeLinecap="round"/>
-                    <path d="M 160 50 Q 162 150 158 250 Q 160 325 158 370"
-                          stroke="#5C3317" strokeWidth="24" fill="none" opacity="0.7" strokeLinecap="round"/>
-                    <path d="M 180 50 Q 182 150 180 250 Q 181 325 180 370"
-                          stroke="#4A2511" strokeWidth="22" fill="none" opacity="0.65" strokeLinecap="round"/>
-                    <path d="M 200 50 Q 202 150 200 250 Q 201 325 200 370"
-                          stroke="#5C3317" strokeWidth="23" fill="none" opacity="0.6" strokeLinecap="round"/>
-                    <text x="150" y="30" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold">BEFORE</text>
-                    <text x="150" y="390" textAnchor="middle" fill="#fff" fontSize="14">Damaged & Dull</text>
-                  </svg>
-                </div>
-                <div className="after-side">
-                  <svg viewBox="0 0 300 400" className="hair-illustration">
-                    <defs>
-                      <linearGradient id="shinyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style={{stopColor: '#6B3410', stopOpacity: 1}} />
-                        <stop offset="50%" style={{stopColor: '#5C3317', stopOpacity: 1}} />
-                        <stop offset="100%" style={{stopColor: '#4A2511', stopOpacity: 1}} />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 100 50 L 100 370" stroke="url(#shinyGradient)" strokeWidth="26" fill="none" strokeLinecap="round"/>
-                    <path d="M 120 55 L 120 370" stroke="url(#shinyGradient)" strokeWidth="28" fill="none" strokeLinecap="round"/>
-                    <path d="M 140 50 L 140 370" stroke="url(#shinyGradient)" strokeWidth="27" fill="none" strokeLinecap="round"/>
-                    <path d="M 160 55 L 160 370" stroke="url(#shinyGradient)" strokeWidth="28" fill="none" strokeLinecap="round"/>
-                    <path d="M 180 50 L 180 370" stroke="url(#shinyGradient)" strokeWidth="26" fill="none" strokeLinecap="round"/>
-                    <path d="M 200 55 L 200 370" stroke="url(#shinyGradient)" strokeWidth="27" fill="none" strokeLinecap="round"/>
-                    <ellipse cx="140" cy="120" rx="15" ry="25" fill="#FFD700" opacity="0.4"/>
-                    <ellipse cx="160" cy="200" rx="18" ry="30" fill="#FFD700" opacity="0.35"/>
-                    <ellipse cx="150" cy="290" rx="16" ry="28" fill="#FFD700" opacity="0.4"/>
-                    <text x="150" y="30" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold">AFTER</text>
-                    <text x="150" y="390" textAnchor="middle" fill="#fff" fontSize="14">Healthy & Radiant</text>
-                  </svg>
-                </div>
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/wavy-balayage.png"
+                  alt="Beautiful wavy balayage hair"
+                  className="gallery-real-image"
+                />
               </div>
-              <p className="gallery-caption">Damaged Hair Restoration</p>
+              <p className="gallery-caption">Wavy Balayage Perfection</p>
             </div>
             <div className="gallery-item">
-              <div className="gallery-image before-after">
-                <div className="before-side">
-                  <svg viewBox="0 0 300 400" className="hair-illustration">
-                    <path d="M 150 50 Q 130 100 140 150 Q 135 200 145 250 Q 140 300 145 350"
-                          stroke="#C19A6B" strokeWidth="28" fill="none" opacity="0.7" strokeLinecap="round"/>
-                    <path d="M 150 50 Q 170 100 160 150 Q 165 200 155 250 Q 160 300 155 350"
-                          stroke="#D2B48C" strokeWidth="26" fill="none" opacity="0.65" strokeLinecap="round"/>
-                    <path d="M 120 70 Q 110 120 115 170 Q 112 220 118 270 Q 115 320 118 360"
-                          stroke="#B8936D" strokeWidth="24" fill="none" opacity="0.6" strokeLinecap="round"/>
-                    <path d="M 180 70 Q 190 120 185 170 Q 188 220 182 270 Q 185 320 182 360"
-                          stroke="#B8936D" strokeWidth="24" fill="none" opacity="0.6" strokeLinecap="round"/>
-                    <text x="150" y="30" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold">BEFORE</text>
-                    <text x="150" y="390" textAnchor="middle" fill="#fff" fontSize="14">Wavy & Frizzy</text>
-                  </svg>
-                </div>
-                <div className="after-side">
-                  <svg viewBox="0 0 300 400" className="hair-illustration">
-                    <defs>
-                      <linearGradient id="blondeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style={{stopColor: '#E5C294', stopOpacity: 1}} />
-                        <stop offset="100%" style={{stopColor: '#C19A6B', stopOpacity: 1}} />
-                      </linearGradient>
-                    </defs>
-                    <path d="M 150 50 L 150 350" stroke="url(#blondeGradient)" strokeWidth="34" fill="none" strokeLinecap="round"/>
-                    <path d="M 125 60 L 125 350" stroke="url(#blondeGradient)" strokeWidth="30" fill="none" strokeLinecap="round" opacity="0.85"/>
-                    <path d="M 175 60 L 175 350" stroke="url(#blondeGradient)" strokeWidth="30" fill="none" strokeLinecap="round" opacity="0.85"/>
-                    <circle cx="150" cy="110" r="10" fill="#FFF8DC" opacity="0.5"/>
-                    <circle cx="140" cy="190" r="8" fill="#FFF8DC" opacity="0.45"/>
-                    <circle cx="160" cy="270" r="9" fill="#FFF8DC" opacity="0.5"/>
-                    <text x="150" y="30" textAnchor="middle" fill="#fff" fontSize="20" fontWeight="bold">AFTER</text>
-                    <text x="150" y="390" textAnchor="middle" fill="#fff" fontSize="14">Silky & Straight</text>
-                  </svg>
-                </div>
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/long-straight-brunette.png"
+                  alt="Long straight brunette hair with shine"
+                  className="gallery-real-image"
+                />
               </div>
-              <p className="gallery-caption">Blonde Smoothing Treatment</p>
+              <p className="gallery-caption">Sleek Brunette Transformation</p>
+            </div>
+            <div className="gallery-item">
+              <div className="gallery-image real-photo-gallery">
+                <img
+                  src="/dominic-client-blonde.png"
+                  alt="Dominic with client - Nano Plaster results"
+                  className="gallery-real-image"
+                />
+              </div>
+              <p className="gallery-caption">Nano Plaster Success - Dominic & Client</p>
             </div>
           </div>
         </div>
