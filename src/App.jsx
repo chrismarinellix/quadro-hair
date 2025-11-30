@@ -79,8 +79,8 @@ function App() {
             </div>
             <div className="about-image">
               <img
-                src="/salon-interior.png"
-                alt="Professional salon treatment environment"
+                src="/straight-hair-brunette.png"
+                alt="Beautiful straight hair after Nano Plaster treatment"
                 className="about-real-image"
               />
             </div>
