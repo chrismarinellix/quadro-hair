@@ -119,33 +119,45 @@ function App() {
       </section>
 
       {/* Specialties Section */}
-      <section id="specialties" className="benefits">
+      <section id="specialties" className="specialties-section">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Our Specialties</h2>
             <div className="title-underline"></div>
             <p className="section-subtitle">Expert hair color services tailored to enhance your natural beauty</p>
           </div>
-          <div className="benefits-grid">
-            <div className="benefit-card">
-              <div className="benefit-icon">💛</div>
-              <h3>Blonde Specialists</h3>
-              <p>From platinum to honey blonde, our experts create the perfect shade for your skin tone</p>
+          <div className="specialties-grid">
+            <div className="specialty-card">
+              <div className="specialty-image" style={{backgroundImage: 'url(/dominic-client-blonde.png)'}}>
+                <div className="specialty-overlay">
+                  <h3>Blonde Specialists</h3>
+                  <p>From platinum to honey blonde, our experts create the perfect shade for your skin tone</p>
+                </div>
+              </div>
             </div>
-            <div className="benefit-card">
-              <div className="benefit-icon">🎨</div>
-              <h3>Balayage</h3>
-              <p>Hand-painted highlights for a natural, sun-kissed look that grows out beautifully</p>
+            <div className="specialty-card">
+              <div className="specialty-image" style={{backgroundImage: 'url(/wavy-balayage.png)'}}>
+                <div className="specialty-overlay">
+                  <h3>Balayage</h3>
+                  <p>Hand-painted highlights for a natural, sun-kissed look that grows out beautifully</p>
+                </div>
+              </div>
             </div>
-            <div className="benefit-card">
-              <div className="benefit-icon">✨</div>
-              <h3>Lived-in Colours</h3>
-              <p>Low-maintenance, effortlessly chic color that looks naturally gorgeous</p>
+            <div className="specialty-card">
+              <div className="specialty-image" style={{backgroundImage: 'url(/hair-portrait.png)'}}>
+                <div className="specialty-overlay">
+                  <h3>Lived-in Colours</h3>
+                  <p>Low-maintenance, effortlessly chic color that looks naturally gorgeous</p>
+                </div>
+              </div>
             </div>
-            <div className="benefit-card">
-              <div className="benefit-icon">🤎</div>
-              <h3>Brunettes</h3>
-              <p>Rich, dimensional brunette tones from chocolate to caramel</p>
+            <div className="specialty-card">
+              <div className="specialty-image" style={{backgroundImage: 'url(/long-straight-brunette.png)'}}>
+                <div className="specialty-overlay">
+                  <h3>Brunettes</h3>
+                  <p>Rich, dimensional brunette tones from chocolate to caramel</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
