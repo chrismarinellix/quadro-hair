@@ -78,22 +78,18 @@ function App() {
       <section id="about" className="about">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">What is Nanoplasty?</h2>
+            <h2 className="section-title">About Quadro Hair</h2>
             <div className="title-underline"></div>
+            <p className="section-subtitle">Melbourne's Premier Hair Specialists</p>
           </div>
           <div className="about-grid">
             <div className="about-text">
-              <h3>Revolutionary Hair Technology</h3>
+              <h3>Expert Team, Personalized Service</h3>
               <p>
-                Nanoplasty represents the latest breakthrough in hair smoothing technology.
-                Using advanced nano-molecular science, this treatment penetrates deep into the hair shaft
-                to restructure and repair from within.
+                At Quadro Hair Team, we're passionate about creating beautiful, personalized hair color and styles that enhance your natural beauty. Our team of expert colorists and stylists specialize in the latest techniques and trends, including our revolutionary Nanoplasty treatment.
               </p>
               <p>
-                Unlike traditional keratin treatments, Nanoplasty is completely formaldehyde-free,
-                making it safer for both you and our stylists. The treatment works by filling gaps in
-                damaged hair cuticles with nano-sized particles, resulting in smoother, shinier,
-                healthier-looking hair.
+                Located in Brandon Park Shopping Centre (next to NAB), we've been transforming hair and boosting confidence for over a decade. Our commitment to excellence, ongoing education, and caring approach ensures you receive the best possible service. We're certified color specialists who put your hair health first while delivering 5-star service every visit.
               </p>
               <div className="stats-grid">
                 <div className="stat">
@@ -570,9 +566,11 @@ function App() {
               <div className="contact-card map-card">
                 <div className="contact-icon">📍</div>
                 <h3>Visit Us</h3>
-                <p>Quadro Hair Salon</p>
-                <p>Brandon Park, Melbourne</p>
-                <p>Victoria, Australia</p>
+                <p><strong>Brandon Park Shopping Centre</strong></p>
+                <p>(Next to NAB)</p>
+                <p>Springvale Road & Ferntree Gully Road</p>
+                <p>Mulgrave VIC 3170</p>
+                <p style={{marginTop: '0.5rem', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)'}}>🅿️ Free parking available</p>
                 <div className="map-container">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.8!2d145.2!3d-37.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU0JzAwLjAiUyAxNDXCsDEyJzAwLjAiRQ!5e0!3m2!1sen!2sau!4v1234567890"
@@ -587,9 +585,12 @@ function App() {
               </div>
               <div className="contact-card">
                 <div className="contact-icon">⏰</div>
-                <h3>Book Ahead</h3>
-                <p>We're getting busy!</p>
-                <p>Advance bookings recommended</p>
+                <h3>Opening Hours</h3>
+                <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 5:00 PM</p>
+                <p><strong>Sunday:</strong> Closed</p>
+                <p style={{marginTop: '1rem', fontSize: '0.9rem'}}>📞 Phone: 9561 7822</p>
+                <p style={{fontSize: '0.9rem'}}>Bookings & Enquiries Welcome</p>
               </div>
             </div>
             <div className="contact-cta">
@@ -625,16 +626,21 @@ function App() {
           <div className="footer-content">
             <div className="footer-brand">
               <h3>QUADRO HAIR</h3>
-              <p>Melbourne's Premier Nanoplasty Specialists</p>
+              <p>Melbourne's Premier Hair Specialists</p>
+              <p>Brandon Park Shopping Centre (Next to NAB)</p>
+              <p>Springvale Rd & Ferntree Gully Rd, Mulgrave VIC 3170</p>
             </div>
             <div className="footer-contact">
               <p><strong>Mobile:</strong> 0418 533 927</p>
+              <p><strong>Salon:</strong> 9561 7822</p>
               <p><strong>Contact:</strong> Dominic or Maria</p>
+              <p style={{marginTop: '1rem'}}><strong>Follow Us:</strong></p>
+              <p>📱 Instagram: @quadrohairteam</p>
             </div>
           </div>
           <div className="footer-bottom">
             <p>&copy; 2025 Quadro Hair. All rights reserved.</p>
-            <p>Professional hair care with Nanoplasty technology</p>
+            <p>Expert hair color, styling & Nanoplasty treatments • Free parking at Brandon Park Shopping Centre</p>
           </div>
         </div>
       </footer>
