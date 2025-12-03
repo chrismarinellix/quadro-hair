@@ -7,11 +7,15 @@ function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const heroImages = [
+    '/straight-hair-brunette.png',
     '/hair-portrait.png',
+    '/straight-hair-brunette.png',
     '/women-balayage.png',
-    '/men-styled-quiff.png',
+    '/straight-hair-brunette.png',
     '/wavy-balayage.png',
+    '/straight-hair-brunette.png',
     '/women-blue-hair.png',
+    '/men-styled-quiff.png',
     '/men-wavy-texture.png'
   ]
 
@@ -37,6 +41,7 @@ function App() {
             <a href="#about">About</a>
             <a href="#benefits">Benefits</a>
             <a href="#gallery">Gallery</a>
+            <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -56,11 +61,12 @@ function App() {
           <h1 className="hero-title">Quadro Hair - Looking Good, Feeling Good</h1>
           <h2 className="hero-subtitle">Transform Your Hair*</h2>
           <p className="hero-description">
-            *With Nano Plaster Technology - one of our premium services
+            *With Nanoplasty Technology - one of our premium services
           </p>
           <div className="hero-buttons">
-            <a href="tel:95617822" className="btn btn-primary">Book Now</a>
-            <a href="#about" className="btn btn-secondary">Learn More</a>
+            <a href="sms:0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary">📱 Text Mobile</a>
+            <a href="tel:0418533927" className="btn btn-secondary">📞 Call Mobile</a>
+            <a href="tel:95617822" className="btn btn-secondary">☎️ Call Salon</a>
           </div>
         </div>
         <div className="scroll-indicator">
@@ -68,23 +74,23 @@ function App() {
         </div>
       </section>
 
-      {/* About Nano Plaster */}
+      {/* About Nanoplasty */}
       <section id="about" className="about">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">What is Nano Plaster?</h2>
+            <h2 className="section-title">What is Nanoplasty?</h2>
             <div className="title-underline"></div>
           </div>
           <div className="about-grid">
             <div className="about-text">
               <h3>Revolutionary Hair Technology</h3>
               <p>
-                Nano Plaster (Nanoplasty) represents the latest breakthrough in hair smoothing technology.
+                Nanoplasty represents the latest breakthrough in hair smoothing technology.
                 Using advanced nano-molecular science, this treatment penetrates deep into the hair shaft
                 to restructure and repair from within.
               </p>
               <p>
-                Unlike traditional keratin treatments, Nano Plaster is completely formaldehyde-free,
+                Unlike traditional keratin treatments, Nanoplasty is completely formaldehyde-free,
                 making it safer for both you and our stylists. The treatment works by filling gaps in
                 damaged hair cuticles with nano-sized particles, resulting in smoother, shinier,
                 healthier-looking hair.
@@ -107,7 +113,7 @@ function App() {
             <div className="about-image">
               <img
                 src="/straight-hair-brunette.png"
-                alt="Beautiful straight hair after Nano Plaster treatment"
+                alt="Beautiful straight hair after Nanoplasty treatment"
                 className="about-real-image"
               />
             </div>
@@ -119,7 +125,7 @@ function App() {
       <section id="benefits" className="benefits">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Why Choose Nano Plaster?</h2>
+            <h2 className="section-title">Why Choose Nanoplasty?</h2>
             <div className="title-underline"></div>
           </div>
 
@@ -188,7 +194,7 @@ function App() {
                   <thead>
                     <tr>
                       <th>Feature</th>
-                      <th className="highlight">Nano Plaster</th>
+                      <th className="highlight">Nanoplasty</th>
                       <th>Brazilian Blowout</th>
                       <th>Cezanne</th>
                       <th>Traditional Keratin</th>
@@ -261,7 +267,7 @@ function App() {
                 <div className="timeline-item">
                   <div className="timeline-number">3</div>
                   <div className="timeline-content">
-                    <h3>Nano Plaster Application</h3>
+                    <h3>Nanoplasty Application</h3>
                     <p>The formula is carefully applied section by section for even coverage</p>
                   </div>
                 </div>
@@ -338,11 +344,11 @@ function App() {
               <div className="gallery-image real-photo-gallery">
                 <img
                   src="/dominic-client-blonde.png"
-                  alt="Dominic with client - Nano Plaster results"
+                  alt="Dominic with client - Nanoplasty results"
                   className="gallery-real-image"
                 />
               </div>
-              <p className="gallery-caption">Nano Plaster Success - Dominic & Client</p>
+              <p className="gallery-caption">Nanoplasty Success - Dominic & Client</p>
             </div>
             <div className="gallery-item">
               <div className="gallery-image real-photo-gallery">
@@ -382,7 +388,7 @@ function App() {
                   className="gallery-real-image"
                 />
               </div>
-              <p className="gallery-caption">Ultra Sleek Nano Plaster</p>
+              <p className="gallery-caption">Ultra Sleek Nanoplasty</p>
             </div>
           </div>
         </div>
@@ -461,27 +467,123 @@ function App() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section id="testimonials" className="testimonials">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">What Our Clients Say</h2>
+            <div className="title-underline"></div>
+            <p className="section-subtitle">Real reviews from real people</p>
+          </div>
+          <div className="testimonials-grid">
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "Dom has been doing my son's hair for a couple years now, always does an amazing job. Very patient with the kids, and they love him!"
+              </p>
+              <p className="testimonial-author">- Amanda</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "Every employee is knowledgable with colour, tint, highlights, cuts, blow waves, and hair styles. Above all they take care of elderly people, make sure they are safe until family meet up with them after they are attended to. The whole crew are hospitable, friendly and kind. The owner of the salon, ensures that his salon is a happy, pleasant safe environment for everyone, the employees and clients. I highly recommend this salon for people of all ages, men and women."
+              </p>
+              <p className="testimonial-author">- Rvan</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "For over 25 years Quadro has been my go-to place for haircuts.....that's over 300 haircuts! Dom, Eva and the team provide amazing service in their very vibrant and friendly salon. A big call out to Maria who has cut my hair all but perhaps 5-10 times over the 25 years. It's obviously good as I travel 20kms to get there!"
+              </p>
+              <p className="testimonial-author">- Greg</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "I am over the moon with how my hair looks! Haven't had my hair professionally dyed in so many years and i was given great advice on what colour I should opt for. Staff are very very friendly and I was made to feel welcome from beginning to end. Definitely recommend this place to everyone. Thanks so very much to all of the staff for making me feel a million dollars. Haven't felt this good in such a long time."
+              </p>
+              <p className="testimonial-author">- Aimee</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "Dom and the team are absolutely amazing. Ive been going there for 9 years now, I live about 45 mins away but travel all the way there because of the amazing job they do. Have never been disappointed in the haircuts they provide, and the team there are incredibly friendly and accommodating. Would recommend to everyone!"
+              </p>
+              <p className="testimonial-author">- Cameron</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "My 7 year old son had his first haircut with Dominic here. I was very happy with the result, considering he has curly hair, that is difficult to style."
+              </p>
+              <p className="testimonial-author">- Laura</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "I've been getting my hair done here for the past 16 years & thoroughly enjoy not only the cut/colour & style I walk out with, but the friendly & personal customer service from their experienced staff. Nothing is ever a problem & I always feel like I'm in exceptional hands."
+              </p>
+              <p className="testimonial-author">- Vanessa</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "Thanks to Sandee for looking after me for my first colour - mocha with some red. Always a pleasure getting my hair done at Quadro. Had a styling done for a wedding a few years back and it's the same great service!"
+              </p>
+              <p className="testimonial-author">- Antara</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "Maria is such a friendly and easygoing lady who didn't impose her will on me, but kept checking what I was comfortable with every step of the way. I have had my hair cut by the same hairdresser for the last 30 years so I felt a bit insecure. Thank you Maria for your wonderful work. I had such a positive experience yesterday and wouldn't hesitate to recommend your work to anyone."
+              </p>
+              <p className="testimonial-author">- Nancy</p>
+            </div>
+            <div className="testimonial-card">
+              <div className="testimonial-rating">★★★★★</div>
+              <p className="testimonial-text">
+                "Experienced and professional. I got there for my baby razor head shave, and they did a brilliant job not even a single blade cut on scalp. Highly recommended."
+              </p>
+              <p className="testimonial-author">- MJ</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="contact">
         <div className="container">
           <div className="section-header">
             <h2 className="section-title">Book Your Transformation</h2>
             <div className="title-underline"></div>
-            <p className="section-subtitle">Visit Quadro Hair in Sydney for your Nano Plaster treatment</p>
+            <p className="section-subtitle">Visit Quadro Hair in Melbourne, Brandon Park for your Nanoplasty treatment</p>
           </div>
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-card">
-                <div className="contact-icon">📞</div>
-                <h3>Call Us</h3>
-                <a href="tel:95617822" className="contact-link">9561 7822</a>
-                <p>Speak with Dominic or Maria</p>
+                <div className="contact-icon">📱</div>
+                <h3>Text or Call</h3>
+                <a href="tel:0418533927" className="contact-link">0418 533 927</a>
+                <a href="sms:0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📱 Send Text Message</a>
+                <p>Message Dominic or Maria</p>
               </div>
-              <div className="contact-card">
+              <div className="contact-card map-card">
                 <div className="contact-icon">📍</div>
                 <h3>Visit Us</h3>
                 <p>Quadro Hair Salon</p>
-                <p>Sydney, Australia</p>
+                <p>Brandon Park, Melbourne</p>
+                <p>Victoria, Australia</p>
+                <div className="map-container">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3148.8!2d145.2!3d-37.9!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDU0JzAwLjAiUyAxNDXCsDEyJzAwLjAiRQ!5e0!3m2!1sen!2sau!4v1234567890"
+                    width="100%"
+                    height="200"
+                    style={{ border: 0, borderRadius: '10px', marginTop: '1rem' }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
               </div>
               <div className="contact-card">
                 <div className="contact-icon">⏰</div>
@@ -494,7 +596,7 @@ function App() {
               <div className="cta-box">
                 <h3>Ready for Beautiful Hair?</h3>
                 <p>
-                  Experience the revolutionary Nano Plaster treatment that will transform your hair
+                  Experience the revolutionary Nanoplasty treatment that will transform your hair
                   for 6-12 months. Say goodbye to daily styling and hello to effortlessly gorgeous hair.
                 </p>
                 <div className="pricing-info">
@@ -504,10 +606,13 @@ function App() {
                     <span className="price-note">Lasts 6-12 months</span>
                   </div>
                 </div>
-                <a href="tel:95617822" className="btn btn-primary btn-large">
-                  📞 Call 9561 7822 Now
+                <a href="sms:0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary btn-large">
+                  📱 Text to Book Now
                 </a>
-                <p className="cta-footnote">Ask for Dominic or Maria - Your hair transformation experts</p>
+                <a href="tel:0418533927" className="btn btn-secondary btn-large" style={{marginTop: '1rem'}}>
+                  📞 Or Call 0418 533 927
+                </a>
+                <p className="cta-footnote">Message or call Dominic and Maria - Your hair transformation experts</p>
               </div>
             </div>
           </div>
@@ -520,16 +625,16 @@ function App() {
           <div className="footer-content">
             <div className="footer-brand">
               <h3>QUADRO HAIR</h3>
-              <p>Sydney's Premier Nano Plaster Specialists</p>
+              <p>Melbourne's Premier Nanoplasty Specialists</p>
             </div>
             <div className="footer-contact">
-              <p><strong>Phone:</strong> 9561 7822</p>
+              <p><strong>Mobile:</strong> 0418 533 927</p>
               <p><strong>Contact:</strong> Dominic or Maria</p>
             </div>
           </div>
           <div className="footer-bottom">
             <p>&copy; 2025 Quadro Hair. All rights reserved.</p>
-            <p>Professional hair care with Nano Plaster technology</p>
+            <p>Professional hair care with Nanoplasty technology</p>
           </div>
         </div>
       </footer>
