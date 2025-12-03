@@ -39,7 +39,8 @@ function App() {
           <div className="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
-            <a href="#benefits">Benefits</a>
+            <a href="#specialties">Specialties</a>
+            <a href="#benefits">Nanoplasty</a>
             <a href="#gallery">Gallery</a>
             <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
@@ -112,6 +113,39 @@ function App() {
                 alt="Beautiful straight hair after Nanoplasty treatment"
                 className="about-real-image"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Specialties Section */}
+      <section id="specialties" className="benefits">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Our Specialties</h2>
+            <div className="title-underline"></div>
+            <p className="section-subtitle">Expert hair color services tailored to enhance your natural beauty</p>
+          </div>
+          <div className="benefits-grid">
+            <div className="benefit-card">
+              <div className="benefit-icon">💛</div>
+              <h3>Blonde Specialists</h3>
+              <p>From platinum to honey blonde, our experts create the perfect shade for your skin tone</p>
+            </div>
+            <div className="benefit-card">
+              <div className="benefit-icon">🎨</div>
+              <h3>Balayage</h3>
+              <p>Hand-painted highlights for a natural, sun-kissed look that grows out beautifully</p>
+            </div>
+            <div className="benefit-card">
+              <div className="benefit-icon">✨</div>
+              <h3>Lived-in Colours</h3>
+              <p>Low-maintenance, effortlessly chic color that looks naturally gorgeous</p>
+            </div>
+            <div className="benefit-card">
+              <div className="benefit-icon">🤎</div>
+              <h3>Brunettes</h3>
+              <p>Rich, dimensional brunette tones from chocolate to caramel</p>
             </div>
           </div>
         </div>
