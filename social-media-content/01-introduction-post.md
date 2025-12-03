@@ -27,7 +27,7 @@ Ready to transform your life?
 
 Starting from $350 | Lasts 6-12 months
 
-#NanoPlaster #Nanoplasty #QuadroHair #SydneyHair #HairTransformation #FrizzFreeHair #KeratinTreatment #SmoothHair #HairGoals #SydneySalon #BeautifulHair #HairCare #LongLastingResults #FormaldehydeFree #HealthyHair
+#Nanoplasty #QuadroHair #SydneyHair #HairTransformation #FrizzFreeHair #KeratinTreatment #SmoothHair #HairGoals #SydneySalon #BeautifulHair #HairCare #LongLastingResults #FormaldehydeFree #HealthyHair
 
 ---
 

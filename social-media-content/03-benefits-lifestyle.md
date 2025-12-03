@@ -34,7 +34,7 @@ Quadro Hair Sydney | Nano Plaster Specialists
 📞 9561 7822 - Book with Dominic or Maria
 ⏰ Getting busy - book ahead!
 
-#NanoPlaster #HairGoals #TimeShaver #MorningRoutine #SydneyLifestyle #EffortlessBeauty #QuadroHair #ConfidentHair #BusyLife #SelfCare #HairInvestment #WeatherProofHair #SydneySalon #BeautifulHair #GameChanger
+#Nanoplasty #HairGoals #TimeShaver #MorningRoutine #SydneyLifestyle #EffortlessBeauty #QuadroHair #ConfidentHair #BusyLife #SelfCare #HairInvestment #WeatherProofHair #SydneySalon #BeautifulHair #GameChanger
 
 ---
 

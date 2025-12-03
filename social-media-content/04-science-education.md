@@ -38,7 +38,7 @@ Ready to experience the future of hair care?
 📍 Quadro Hair, Sydney
 💰 From $350 | 6-12 months
 
-#NanoPlaster #HairScience #NanoTechnology #MolecularHairCare #QuadroHair #SydneySalon #AdvancedHairCare #ScienceOfBeauty #HairEducation #FormaldehydeFree #InnovativeHairCare #HealthyHair #SydneyHair #HairChemistry #BeautyScience
+#Nanoplasty #HairScience #NanoTechnology #MolecularHairCare #QuadroHair #SydneySalon #AdvancedHairCare #ScienceOfBeauty #HairEducation #FormaldehydeFree #InnovativeHairCare #HealthyHair #SydneyHair #HairChemistry #BeautyScience
 
 ---
 

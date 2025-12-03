@@ -43,7 +43,7 @@ Don't wait another year fighting your hair every morning.
 
 The transformation you've been waiting for is one phone call away.
 
-#NanoPlaster #QuadroHair #SydneySalon #ClientResults #HairTransformation #BeforeAndAfter #RealResults #CustomerReviews #SydneyHair #BookNow #HairGoals #TransformYourHair #NanoplastyExperts #TrustedSalon #AustralianSalon
+#Nanoplasty #QuadroHair #SydneySalon #ClientResults #HairTransformation #BeforeAndAfter #RealResults #CustomerReviews #SydneyHair #BookNow #HairGoals #TransformYourHair #NanoplastyExperts #TrustedSalon #AustralianSalon
 
 ---
 

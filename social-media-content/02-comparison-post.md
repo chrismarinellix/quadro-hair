@@ -38,7 +38,7 @@ Book your Nano Plaster treatment at Quadro Hair Sydney
 
 From $350 | 6-12 months of perfection
 
-#NanoPlaster #HairComparison #BetterThanKeratin #SydneyHair #QuadroHair #FormaldehydeFree #HairScience #NanoTechnology #BestHairTreatment #SydneySalon #HairFacts #SmoothHair #NoMoreFrizz #ProfessionalHairCare
+#Nanoplasty #HairComparison #BetterThanKeratin #SydneyHair #QuadroHair #FormaldehydeFree #HairScience #NanoTechnology #BestHairTreatment #SydneySalon #HairFacts #SmoothHair #NoMoreFrizz #ProfessionalHairCare
 
 ---
 
