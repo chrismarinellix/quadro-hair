@@ -1,49 +1,69 @@
-# Quadro Hair - Nano Plaster Treatment Website
+# Quadro Hair - Looking Good, Feeling Good
 
-A professional, modern website promoting Nano Plaster keratin hair treatment services for Quadro Hair salon in Sydney, Australia.
+A professional, modern website for Quadro Hair salon in Melbourne, Brandon Park. Featuring our revolutionary Nanoplasty treatment and full-service hair color and styling.
 
 ## Overview
 
-This website showcases the revolutionary Nano Plaster (Nanoplasty) hair treatment - a formaldehyde-free keratin smoothing service that lasts 6-12 months. The site features:
+This website showcases Quadro Hair's premium services including Nanoplasty (formaldehyde-free keratin treatment lasting 6-12 months) and expert color services. The site features:
 
-- **Hero Section** with glassmorphic pulsating orb animation
-- **About Section** explaining Nano Plaster technology
-- **Benefits Section** with interactive tabs covering:
+- **Hero Section** with rotating image carousel
+- **About Section** introducing Quadro Hair Team
+- **Specialties Section** showcasing:
+  - Blonde Specialists
+  - Balayage
+  - Lived-in Colours
+  - Brunettes
+- **Nanoplasty Section** with interactive tabs covering:
   - Key Benefits (6 benefit cards)
-  - Competitor Comparison table (vs Brazilian Blowout, Cezanne, Traditional Keratin)
+  - Competitor Comparison table
   - 5-step Process Timeline
-- **Gallery Section** with before/after SVG illustrations
-- **Contact Section** with booking CTA and salon information
+- **Women's & Men's Gallery Sections** with real client photos
+- **Testimonials Section** with 10 customer reviews
+- **Contact Section** with SMS booking, maps, hours, and location details
 - Fully responsive design
 - Smooth scroll navigation
-- Modern glassmorphic UI elements
+- Modern UI with clean aesthetics
 
 ## Technology Stack
 
-- **React** 19.2.0 - UI framework
+- **React** 19.2.0 - UI framework with hooks (useState, useEffect)
 - **Vite** 7.2.4 - Build tool and dev server
 - **CSS3** - Custom styling with animations
-- **SVG** - Custom hair illustrations
+- **Netlify** - Hosting and continuous deployment
 
-## Key Features
+## Location
 
-### Nano Plaster Treatment Benefits
+**Quadro Hair Salon**
+- Brandon Park Shopping Centre (Next to NAB)
+- Springvale Road & Ferntree Gully Road
+- Mulgrave VIC 3170
+- Free parking available
 
-- 6-12 months duration (vs 2-4 months for traditional treatments)
+**Contact:**
+- Mobile: 0418 533 927
+- Salon: 9561 7822
+- Ask for Dominic or Maria
+- Instagram: @quadrohairteam
+
+**Hours:**
+- Monday - Friday: 9:00 AM - 6:00 PM
+- Saturday: 9:00 AM - 5:00 PM
+- Sunday: Closed
+
+## Key Services
+
+### Nanoplasty Treatment (Hero Service)
+- 6-12 months duration
 - 100% formaldehyde-free
 - 100% frizz reduction
 - Repairs damaged hair
-- Cost-effective long-term solution
-- Time-saving daily styling
+- Starting from $350
 
-### Design Features
-
-- **Glassmorphism** - Modern frosted glass effects
-- **Smooth Animations** - Fade-ins, pulse effects, floating orb
-- **Responsive** - Mobile-first design
-- **Accessible** - Semantic HTML, ARIA labels
-- **Fast** - Optimized with Vite
-- **SEO-Friendly** - Proper meta tags and structure
+### Color Services
+- Blonde Specialists (platinum to honey)
+- Balayage (hand-painted highlights)
+- Lived-in Colours (low-maintenance)
+- Brunettes (chocolate to caramel)
 
 ## Project Structure
 
@@ -54,7 +74,9 @@ quadro-hair/
 │   ├── App.css          # Application styles
 │   ├── index.css        # Global styles
 │   └── main.jsx         # Entry point
-├── public/              # Static assets
+├── public/              # Static assets (images)
+├── social-media-content/ # Social media posts
+├── netlify.toml         # Netlify configuration
 ├── package.json         # Dependencies
 └── README.md           # This file
 ```
@@ -82,6 +104,8 @@ Visit `http://localhost:5173` to view the site.
 npm run build
 ```
 
+Output will be in `dist/` folder.
+
 ### Preview Production Build
 
 ```bash
@@ -90,35 +114,46 @@ npm run preview
 
 ## Deployment
 
-### Netlify Deployment
+### Git Workflow
 
-1. Build the project:
+**IMPORTANT:** We work directly on the `main` branch only.
+- No dev branch
+- Old static index.html removed
+- Commit directly to main
+- Push triggers automatic Netlify deployment
+
+### Netlify Deployment (Automatic)
+
+1. Push to main branch:
    ```bash
-   npm run build
+   git add .
+   git commit -m "Your commit message"
+   git push origin main
    ```
 
-2. Deploy the `dist` folder to Netlify:
-   ```bash
-   netlify deploy --prod --dir=dist
-   ```
+2. Netlify automatically:
+   - Detects the push
+   - Runs `npm run build`
+   - Deploys `dist/` folder
+   - Updates production site
 
-### GitHub Pages Deployment
+### Production URLs
 
-1. Update `vite.config.js` to set the base path
-2. Build and deploy using GitHub Actions or manually
+- Primary: https://quadrohair.netlify.app
+- Custom Domain: https://quadrohairteam.com.au
 
-## Contact Information
+### Netlify Configuration
 
-**Quadro Hair Salon**
-- Phone: 9561 7822
-- Contact: Dominic or Maria
-- Location: Sydney, Australia
+Build settings in `netlify.toml`:
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Node version: 18
 
 ## Customization
 
 ### Colors
 
-The site uses CSS custom properties for easy theming. Update in `App.css`:
+The site uses CSS custom properties. Update in `App.css`:
 
 ```css
 :root {
@@ -131,63 +166,45 @@ The site uses CSS custom properties for easy theming. Update in `App.css`:
 ### Content
 
 All content is in `src/App.jsx`:
-- Hero section text
-- About section information
-- Benefits and features
-- Comparison table data
+- Hero carousel images
+- About section
+- Specialties
+- Nanoplasty benefits
+- Gallery images
+- Testimonials
 - Contact information
 
-### Animations
+### Images
 
-Pulsating orb animation can be customized in `App.css`:
-- `@keyframes pulse` - Scale and opacity
-- `@keyframes float` - Vertical movement
-- `@keyframes shine` - Inner glow effect
+Add images to `public/` folder and reference in JSX:
+```jsx
+<img src="/your-image.png" alt="Description" />
+```
 
-## Best Practices
+## Features
 
-### Hair Salon Web Design
+### SMS Booking
+- Pre-filled SMS messages for easy appointment booking
+- Direct links to text mobile: 0418 533 927
 
-This site follows industry best practices for hair salon websites:
+### Interactive Elements
+- Hero image carousel (5-second rotation)
+- Tabbed Nanoplasty benefits section
+- Hover effects on cards and buttons
+- Smooth scroll navigation
 
-1. **Visual Impact** - Striking hero with animated elements
-2. **Clear CTA** - Prominent "Book Now" buttons
-3. **Social Proof** - Before/after gallery
-4. **Educational** - Detailed treatment information
-5. **Easy Contact** - Phone number prominently displayed
-6. **Mobile-First** - Responsive for all devices
-7. **Fast Loading** - Optimized images and code
-8. **Professional** - Clean, modern design
-
-### SEO Optimization
-
-- Semantic HTML5 structure
-- Descriptive meta tags
-- Alt text for all images
-- Fast page load times
-- Mobile-responsive
-- Clean URLs
-- Proper heading hierarchy
-
-## Maintenance
-
-### Adding New Content
-
-1. Update text in `src/App.jsx`
-2. Add new images to `public/` folder
-3. Reference images in JSX components
-
-### Updating Styles
-
-1. Modify `src/App.css` for component styles
-2. Modify `src/index.css` for global styles
+### Responsive Design
+- Mobile-first approach
+- Breakpoints at 968px and 640px
+- Flexible grid layouts
+- Touch-friendly buttons
 
 ## Performance
 
-- Lighthouse Score: ~95+ (target)
-- First Contentful Paint: <1.5s
-- Time to Interactive: <3s
-- Optimized with Vite's build process
+- Lighthouse Score: 95+ target
+- Fast with Vite's optimized build
+- Lazy loading ready
+- Optimized images
 
 ## Browser Support
 
@@ -197,13 +214,41 @@ This site follows industry best practices for hair salon websites:
 - Edge (latest)
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
-## License
+## Maintenance Notes
 
-Private project for Quadro Hair Salon
+### Adding New Images
+1. Add to `public/` folder
+2. Reference in App.jsx
+3. Commit and push to deploy
+
+### Updating Content
+1. Edit `src/App.jsx`
+2. Test locally: `npm run dev`
+3. Commit and push to deploy
+
+### Social Media Content
+Pre-written posts in `social-media-content/` folder:
+- Introduction post
+- Comparison post
+- Benefits/lifestyle post
+- Science education post
+- Testimonial CTA post
+
+## Important Reminders
+
+- ✅ Work on `main` branch only
+- ✅ No more dev branch
+- ✅ Old static HTML site removed
+- ✅ React app is the only site
+- ✅ Push to main = automatic deploy
+- ✅ Local dev: http://localhost:5173
+- ✅ Production: quadrohair.netlify.app & quadrohairteam.com.au
 
 ## Credits
 
-Designed and developed for Quadro Hair - Sydney's Premier Nano Plaster Specialists
+Designed and developed for Quadro Hair - Melbourne's Premier Hair Specialists
+
+**Services:** Nanoplasty, Blonde Specialists, Balayage, Lived-in Colours, Brunettes, Men's Styling
 
 ---
 

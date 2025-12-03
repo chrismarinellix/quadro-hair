@@ -2,150 +2,57 @@
 
 This guide covers deploying the Quadro Hair website to Netlify.
 
+## IMPORTANT: Git Workflow
+
+**We work directly on the `main` branch only:**
+- ✅ No dev branch
+- ✅ Old static index.html removed
+- ✅ React app is the only site
+- ✅ Commit directly to main
+- ✅ Push triggers automatic Netlify deployment
+
 ## Prerequisites
 
 - Node.js and npm installed
-- Netlify account (free tier is sufficient)
-- Netlify CLI installed: `npm install -g netlify-cli`
+- Netlify account connected to GitHub repository
 - Git installed
 
-## Build the Project
+## Production URLs
 
-Before deploying, always build the project locally to ensure there are no errors:
+- **Primary:** https://quadrohair.netlify.app
+- **Custom Domain:** https://quadrohairteam.com.au
 
-```bash
-cd quadro-hair
-npm run build
-```
+## Automatic Deployment (Current Setup)
 
-This creates an optimized production build in the `dist/` directory.
+The site is configured for **automatic deployment** via Netlify + GitHub integration:
 
-## Deployment to Netlify
-
-### Option 1: Netlify CLI (Recommended)
-
-1. **Login to Netlify:**
+1. **Make changes locally**
+2. **Test in development:**
    ```bash
-   netlify login
+   npm run dev
    ```
+   Visit http://localhost:5173
 
-2. **Initialize Netlify (First Time Only):**
+3. **Commit to main:**
    ```bash
-   netlify init
-   ```
-
-   Follow the prompts:
-   - Create & configure a new site
-   - Choose your team
-   - Site name: `quadro-hair` (or your preferred name)
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-
-3. **Deploy to Production:**
-   ```bash
-   netlify deploy --prod
-   ```
-
-4. **Your site will be live at:**
-   `https://quadro-hair.netlify.app` (or your custom domain)
-
-### Option 2: Netlify Web Interface
-
-1. **Build the project:**
-   ```bash
-   npm run build
-   ```
-
-2. **Go to Netlify:**
-   - Visit https://app.netlify.com
-   - Click "Add new site" → "Deploy manually"
-   - Drag and drop the `dist` folder
-
-3. **Configure site settings:**
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-   - Node version: 18 or higher
-
-### Option 3: Connect GitHub Repository
-
-1. **Push code to GitHub:**
-   ```bash
-   git init
    git add .
-   git commit -m "Initial commit - Quadro Hair website"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/quadro-hair.git
-   git push -u origin main
+   git commit -m "Description of changes"
    ```
 
-2. **Connect to Netlify:**
-   - Go to Netlify dashboard
-   - Click "Add new site" → "Import an existing project"
-   - Choose GitHub and select your repository
-   - Configure build settings:
-     - Build command: `npm run build`
-     - Publish directory: `dist`
-   - Click "Deploy site"
-
-3. **Automatic deployments:**
-   - Every push to main branch will auto-deploy
-   - Preview deployments for pull requests
-
-## Custom Domain Setup
-
-### Using Netlify's Domain
-
-Your site will be available at: `https://YOUR-SITE-NAME.netlify.app`
-
-### Using Custom Domain
-
-1. **In Netlify Dashboard:**
-   - Go to Site settings → Domain management
-   - Click "Add custom domain"
-   - Enter your domain (e.g., `www.quadrohair.com.au`)
-
-2. **Configure DNS:**
-   - Add Netlify's nameservers to your domain registrar, OR
-   - Add a CNAME record pointing to your Netlify URL
-
-3. **Enable HTTPS:**
-   - Netlify provides free SSL certificates
-   - Enable HTTPS redirect in settings
-
-## Environment Variables (If Needed)
-
-If you add any API keys or secrets:
-
-1. **Create `.env` file** (don't commit this!):
-   ```
-   VITE_API_KEY=your_key_here
+4. **Push to GitHub main branch:**
+   ```bash
+   git push origin main
    ```
 
-2. **Add to Netlify:**
-   - Site settings → Environment variables
-   - Add each variable
+5. **Netlify automatically:**
+   - Detects the push to main
+   - Runs `npm run build`
+   - Deploys `dist/` folder to production
+   - Updates both quadrohair.netlify.app and quadrohairteam.com.au
 
-3. **Update `.gitignore`:**
-   ```
-   .env
-   .env.local
-   ```
+## Netlify Configuration
 
-## Performance Optimization
-
-### Before Deployment Checklist
-
-- [ ] Build passes without errors
-- [ ] All images optimized
-- [ ] Lighthouse score >90
-- [ ] Mobile responsive tested
-- [ ] All links working
-- [ ] Contact phone number correct (9561 7822)
-- [ ] Forms working (if added)
-
-### Netlify Configuration
-
-Create `netlify.toml` in project root:
+Configuration in `netlify.toml`:
 
 ```toml
 [build]
@@ -161,121 +68,215 @@ Create `netlify.toml` in project root:
   NODE_VERSION = "18"
 ```
 
+## Build the Project Locally
+
+To test the build before pushing:
+
+```bash
+cd quadro-hair
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
+
+### Preview Production Build
+
+```bash
+npm run preview
+```
+
+Visit http://localhost:4173 to preview the production build.
+
+## Custom Domain Setup
+
+### Current Configuration
+
+- **Custom Domain:** quadrohairteam.com.au
+- **DNS:** Configured through GoDaddy with Netlify nameservers
+- **SSL:** Automatic HTTPS via Netlify (Let's Encrypt)
+
+### DNS Settings (Already Configured)
+
+Domain uses Netlify DNS nameservers in GoDaddy:
+- Netlify handles all DNS routing
+- Automatic SSL certificate provisioning
+- HTTPS redirect enabled
+
+## Pre-Deployment Checklist
+
+Before pushing changes to main:
+
+- [ ] Build passes without errors (`npm run build`)
+- [ ] Test locally (`npm run dev`)
+- [ ] All images optimized and loading
+- [ ] Mobile responsive tested
+- [ ] Contact info correct:
+  - Mobile: 0418 533 927
+  - Salon: 9561 7822
+  - Location: Brandon Park Shopping Centre
+- [ ] SMS booking links work
+- [ ] Navigation links work
+- [ ] Carousel rotating correctly
+- [ ] All sections present (About, Specialties, Nanoplasty, Gallery, Testimonials, Contact)
+
 ## Post-Deployment Testing
 
-1. **Test all links and navigation**
-2. **Verify phone number clickable on mobile:** tel:95617822
+After Netlify deploys (usually 1-2 minutes):
+
+1. **Test both URLs:**
+   - https://quadrohair.netlify.app
+   - https://quadrohairteam.com.au
+
+2. **Verify phone numbers clickable on mobile:**
+   - Mobile: tel:0418533927
+   - Salon: tel:95617822
+   - SMS: sms:0418533927
+
 3. **Check responsive design on:**
    - iPhone (Safari)
    - Android (Chrome)
    - Tablet (iPad)
    - Desktop (Chrome, Firefox, Safari)
-4. **Verify animations:**
-   - Pulsating orb
-   - Scroll effects
-   - Hover states
-5. **Test performance:**
-   - Run Lighthouse audit
+
+4. **Test all sections:**
+   - Hero carousel (5-second rotation)
+   - About section
+   - Specialties cards
+   - Nanoplasty tabs (Benefits, Comparison, Process)
+   - Women's Gallery
+   - Men's Gallery
+   - Testimonials (10 reviews)
+   - Contact section with map
+   - Footer with social media
+
+5. **Verify performance:**
+   - Run Lighthouse audit (target 95+)
    - Check page load time
-   - Verify images load
-
-## Continuous Deployment Workflow
-
-1. **Make changes locally**
-2. **Test in development:**
-   ```bash
-   npm run dev
-   ```
-3. **Build and test:**
-   ```bash
-   npm run build
-   npm run preview
-   ```
-4. **Commit changes:**
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   ```
-5. **Push to GitHub:**
-   ```bash
-   git push
-   ```
-6. **Netlify auto-deploys** (if connected to GitHub)
+   - Verify images load quickly
 
 ## Rollback
 
 If you need to rollback to a previous version:
 
 1. **In Netlify Dashboard:**
-   - Go to Deploys
+   - Go to Deploys tab
    - Find the previous successful deploy
-   - Click "Publish deploy"
+   - Click three dots → "Publish deploy"
 
-## Monitoring
+2. **Or revert via Git:**
+   ```bash
+   git revert HEAD
+   git push origin main
+   ```
 
-### Analytics
+## Monitoring Deployments
 
-Add to `index.html` before `</head>`:
+### View Deploy Status
 
-```html
-<!-- Google Analytics or other analytics code -->
-```
+- Netlify Dashboard: https://app.netlify.com
+- Deploy logs show real-time build progress
+- Email notifications on deploy success/failure
 
-### Performance Monitoring
+### Recent Deploys
 
-- Use Netlify Analytics (paid add-on)
-- Or integrate Google Analytics
-- Monitor Core Web Vitals
+Netlify dashboard shows:
+- Deploy time and duration
+- Commit message
+- Deploy preview
+- Build logs
 
 ## Troubleshooting
 
 ### Build Fails
 
 ```bash
-# Clear node_modules and reinstall
-rm -rf node_modules package-lock.json
+# Clear cache and rebuild
+rm -rf node_modules package-lock.json dist
 npm install
 npm run build
 ```
 
+### Changes Not Showing
+
+1. Wait 1-2 minutes for deploy to complete
+2. Hard refresh browser (Ctrl+Shift+R or Cmd+Shift+R)
+3. Clear browser cache
+4. Check Netlify deploy logs for errors
+
 ### CSS Not Loading
 
-- Check `index.html` imports
-- Verify `dist` folder structure
-- Clear Netlify cache and rebuild
+- Verify `dist` folder has all CSS files
+- Check build logs in Netlify
+- Clear Netlify cache and redeploy
 
 ### Routing Issues
 
 - Ensure `netlify.toml` has redirect rules
-- Check SPA routing configuration
+- SPA routing configured for React Router (if added)
+
+## Performance Optimization
+
+### Images
+
+- Keep images under 500KB
+- Use WebP format when possible
+- Optimize before adding to `public/` folder
+
+### Build Optimization
+
+Vite automatically:
+- Minifies JavaScript and CSS
+- Optimizes chunks
+- Tree-shakes unused code
+- Generates source maps
 
 ## Support
 
 For deployment issues:
-- Netlify Docs: https://docs.netlify.com
-- Netlify Support: https://www.netlify.com/support
+- **Netlify Docs:** https://docs.netlify.com
+- **Netlify Support:** https://www.netlify.com/support
+- **GitHub Issues:** Check repo issues tab
 
 ---
 
 ## Quick Reference
 
-**Deploy to Netlify:**
+### Local Development
 ```bash
-npm run build
-netlify deploy --prod
+npm run dev          # Start dev server (localhost:5173)
+npm run build        # Build for production
+npm run preview      # Preview production build (localhost:4173)
 ```
 
-**Preview deploy:**
+### Git Workflow (Main Branch Only)
 ```bash
-netlify deploy
+git add .
+git commit -m "Your changes"
+git push origin main  # Auto-deploys to Netlify
 ```
 
-**Check deploy status:**
-```bash
-netlify status
-```
+### Important Reminders
 
-**Open site:**
-```bash
-netlify open:site
-```
+- ✅ Work on **main** branch only
+- ✅ No dev branch anymore
+- ✅ Old static HTML site removed
+- ✅ Push to main = automatic deploy
+- ✅ Wait 1-2 minutes for deploy to complete
+- ✅ Test on both URLs after deploy
+
+### Site Information
+
+**Quadro Hair Salon**
+- Location: Brandon Park Shopping Centre (Next to NAB), Mulgrave VIC 3170
+- Mobile: 0418 533 927
+- Salon: 9561 7822
+- Instagram: @quadrohairteam
+- Hours: Mon-Fri 9AM-6PM, Sat 9AM-5PM, Sun Closed
+
+**Services:**
+- Nanoplasty Treatment (Hero Service - $350+)
+- Blonde Specialists
+- Balayage
+- Lived-in Colours
+- Brunettes
+- Men's Styling
