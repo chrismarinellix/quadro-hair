@@ -39,7 +39,7 @@ function App() {
           <div className="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
-            <a href="#specialties">Specialties</a>
+            <a href="#services">Services</a>
             <a href="#benefits">Nanoplasty</a>
             <a href="#gallery">Gallery</a>
             <a href="#testimonials">Testimonials</a>
@@ -92,20 +92,6 @@ function App() {
               <p>
                 Located in Brandon Park Shopping Centre (next to NAB), we've been transforming hair and boosting confidence for over a decade. Our commitment to excellence, ongoing education, and caring approach ensures you receive the best possible service. We're certified color specialists who put your hair health first while delivering 5-star service every visit.
               </p>
-              <div className="stats-grid">
-                <div className="stat">
-                  <div className="stat-number">6-12</div>
-                  <div className="stat-label">Months Duration</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">100%</div>
-                  <div className="stat-label">Frizz Reduction</div>
-                </div>
-                <div className="stat">
-                  <div className="stat-number">0%</div>
-                  <div className="stat-label">Formaldehyde</div>
-                </div>
-              </div>
             </div>
             <div className="about-image">
               <img
@@ -118,15 +104,23 @@ function App() {
         </div>
       </section>
 
-      {/* Specialties Section */}
-      <section id="specialties" className="specialties-section">
+      {/* Services Section */}
+      <section id="services" className="specialties-section">
         <div className="container">
           <div className="section-header">
-            <h2 className="section-title">Our Specialties</h2>
+            <h2 className="section-title">Our Premium Services</h2>
             <div className="title-underline"></div>
             <p className="section-subtitle">Expert hair color services tailored to enhance your natural beauty</p>
           </div>
           <div className="specialties-grid">
+            <div className="specialty-card">
+              <div className="specialty-image" style={{backgroundImage: 'url(/straight-hair-brunette.png)'}}>
+                <div className="specialty-overlay">
+                  <h3>Nanoplasty Treatment</h3>
+                  <p>Revolutionary formaldehyde-free treatment for smooth, frizz-free hair lasting 6-12 months</p>
+                </div>
+              </div>
+            </div>
             <div className="specialty-card">
               <div className="specialty-image" style={{backgroundImage: 'url(/dominic-client-blonde.png)'}}>
                 <div className="specialty-overlay">
@@ -169,6 +163,40 @@ function App() {
           <div className="section-header">
             <h2 className="section-title">Why Choose Nanoplasty?</h2>
             <div className="title-underline"></div>
+          </div>
+
+          {/* Nanoplasty Introduction */}
+          <div className="about-grid" style={{marginBottom: '3rem'}}>
+            <div className="about-text">
+              <h3>Revolutionary Hair Transformation Technology</h3>
+              <p>
+                Nanoplasty is a cutting-edge hair smoothing treatment that uses nanotechnology to transform frizzy, unmanageable hair into sleek, smooth, and ultra-shiny locks. Unlike traditional keratin treatments, Nanoplasty is 100% formaldehyde-free and actually repairs your hair while straightening it.
+              </p>
+              <p>
+                This revolutionary treatment works by infusing nano-sized particles deep into your hair shaft, restructuring damaged bonds and creating a protective shield that locks in moisture and blocks out humidity. The result? Effortlessly gorgeous hair that lasts 6-12 months with minimal maintenance.
+              </p>
+              <div className="stats-grid">
+                <div className="stat">
+                  <div className="stat-number">6-12</div>
+                  <div className="stat-label">Months Duration</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-number">100%</div>
+                  <div className="stat-label">Frizz Reduction</div>
+                </div>
+                <div className="stat">
+                  <div className="stat-number">0%</div>
+                  <div className="stat-label">Formaldehyde</div>
+                </div>
+              </div>
+            </div>
+            <div className="about-image">
+              <img
+                src="/straight-hair-brunette.png"
+                alt="Beautiful straight hair after Nanoplasty treatment"
+                className="about-real-image"
+              />
+            </div>
           </div>
 
           {/* Benefits Tabs */}
