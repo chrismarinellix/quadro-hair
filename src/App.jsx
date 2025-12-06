@@ -125,6 +125,21 @@ function App() {
     setShowValidationWarning(false)
   }
 
+  // Calculate estimated price
+  const getEstimatedPrice = () => {
+    if (!selectedService) return null
+
+    for (const category of Object.values(serviceCategories)) {
+      const service = category.services.find(s => s.name === selectedService)
+      if (service) {
+        // Extract numeric value from price string (e.g., "from $70" -> 70)
+        const match = service.price.match(/\$(\d+)/)
+        return match ? parseInt(match[1]) : null
+      }
+    }
+    return null
+  }
+
   const getMissingFields = () => {
     const missing = []
     if (!selectedService) missing.push('Service')
@@ -1133,6 +1148,18 @@ function App() {
                 ></textarea>
               </div>
 
+              {/* Estimated Cost Display */}
+              {selectedService && getEstimatedPrice() && (
+                <div className="estimated-cost-box">
+                  <div className="cost-icon">💰</div>
+                  <div className="cost-details">
+                    <div className="cost-label">Estimated Cost</div>
+                    <div className="cost-amount">${getEstimatedPrice()}</div>
+                    <div className="cost-disclaimer">Price is indicative only and must be confirmed at consultation</div>
+                  </div>
+                </div>
+              )}
+
               {/* Validation Warning */}
               {showValidationWarning && getMissingFields().length > 0 && (
                 <div className="validation-warning">
@@ -1148,7 +1175,7 @@ function App() {
               {/* Send Button */}
               <a
                 href={`sms:0418533927?&body=${encodeURIComponent(
-                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedService ? `a ${selectedService}` : 'an appointment'}${preferredDate ? ` on ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? ` (${preferredTime})` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\n${clientMessage}` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
+                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedService ? `a ${selectedService}` : 'an appointment'}${preferredDate ? ` on ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? ` (${preferredTime})` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\n${clientMessage}` : ''}${selectedService && getEstimatedPrice() ? `\n\nEstimated cost: $${getEstimatedPrice()} (indicative only - must be confirmed at consultation)` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
                 )}`}
                 className="btn btn-primary btn-large"
                 onClick={handleSendClick}
