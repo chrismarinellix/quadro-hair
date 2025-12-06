@@ -5,6 +5,15 @@ import './App.css'
 function App() {
   const [activeTab, setActiveTab] = useState('benefits')
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0)
+  const [showServiceModal, setShowServiceModal] = useState(false)
+  const [selectedService, setSelectedService] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [clientName, setClientName] = useState('')
+  const [clientMessage, setClientMessage] = useState('')
+  const [preferredDate, setPreferredDate] = useState('')
+  const [preferredTime, setPreferredTime] = useState('')
+  const [selectedProducts, setSelectedProducts] = useState([])
 
   const heroImages = [
     '/straight-hair-brunette.png',
@@ -19,6 +28,101 @@ function App() {
     '/men-wavy-texture.png'
   ]
 
+  const taglines = [
+    "Looking Good for Your Wedding Day",
+    "Getting Gorgeous for Your Engagement",
+    "Stunning Hair for Debutante Ball Night",
+    "Perfect Hair for the Bridal Party",
+    "Looking Fabulous (Even Getting Divorced)",
+    "Beautiful Hair for Every Occasion",
+    "Graduation Glam - You Earned It",
+    "Anniversary Ready Hair",
+    "Date Night Perfection",
+    "Because You Deserve Great Hair"
+  ]
+
+  const serviceCategories = {
+    'Cuts': {
+      icon: '✂️',
+      services: [
+        { name: 'Ladies Cut', price: 'from $70' },
+        { name: 'Ladies Total Reshape', price: 'from $80' },
+        { name: 'Mens Cut', price: 'from $45' },
+        { name: 'Mens Total Reshape', price: 'from $55' },
+        { name: 'Children Cut', price: 'from $35' },
+        { name: 'Fringe Trim', price: 'from $15' },
+        { name: 'Shave', price: 'from $30' }
+      ]
+    },
+    'Colour': {
+      icon: '🎨',
+      services: [
+        { name: 'Full Head Foils', price: 'from $150' },
+        { name: 'Half Head Foils', price: 'from $100' },
+        { name: 'Balayage', price: 'from $180' },
+        { name: 'Lived-in Colour', price: 'from $160' },
+        { name: 'Blonde Specialists', price: 'from $200' },
+        { name: 'Brunettes', price: 'from $150' },
+        { name: 'Semi Permanent', price: 'from $65' },
+        { name: 'Permanent Gloss', price: 'from $85' },
+        { name: 'Toner', price: 'from $55' }
+      ]
+    },
+    'Blow Wave & Styling': {
+      icon: '💨',
+      services: [
+        { name: 'Short Hair Blow Wave', price: 'from $45' },
+        { name: 'Long Hair Blow Wave', price: 'from $55' },
+        { name: 'Curling/Tonging', price: 'from $100' },
+        { name: 'Hair Up Style', price: 'from $100' }
+      ]
+    },
+    'Treatments': {
+      icon: '✨',
+      services: [
+        { name: 'Nanoplasty Treatment', price: 'from $350' },
+        { name: 'Other Treatments', price: 'POA' }
+      ]
+    }
+  }
+
+  const timeSlots = ['Morning (9am-12pm)', 'Afternoon (12pm-3pm)', 'Late Afternoon (3pm-5pm)', 'Evening (5pm-7pm)']
+
+  const hairCareProducts = [
+    { name: 'Shampoo', icon: '🧴' },
+    { name: 'Conditioner', icon: '💧' }
+  ]
+
+  const toggleProduct = (productName) => {
+    if (selectedProducts.includes(productName)) {
+      setSelectedProducts(selectedProducts.filter(p => p !== productName))
+    } else {
+      setSelectedProducts([...selectedProducts, productName])
+    }
+  }
+
+  // Get minimum date (today)
+  const getMinDate = () => {
+    const today = new Date()
+    return today.toISOString().split('T')[0]
+  }
+
+  // Get maximum date (3 months from now)
+  const getMaxDate = () => {
+    const today = new Date()
+    const maxDate = new Date(today.setMonth(today.getMonth() + 3))
+    return maxDate.toISOString().split('T')[0]
+  }
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(selectedCategory === category ? '' : category)
+    setSelectedService('')
+  }
+
+  const handleServiceClick = (serviceName) => {
+    setSelectedService(serviceName)
+  }
+
   // Carousel effect - change image every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
@@ -26,6 +130,17 @@ function App() {
         (prevIndex + 1) % heroImages.length
       )
     }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // Tagline rotation - change every 4 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTaglineIndex((prevIndex) =>
+        (prevIndex + 1) % taglines.length
+      )
+    }, 4000)
 
     return () => clearInterval(interval)
   }, [])
@@ -40,9 +155,9 @@ function App() {
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
-            <a href="#benefits">Nanoplasty</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#gift-vouchers">Gift Vouchers</a>
             <a href="#gallery">Gallery</a>
-            <a href="#testimonials">Testimonials</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -59,15 +174,14 @@ function App() {
         ></div>
         <div className="hero-overlay"></div>
         <div className="hero-content">
-          <h1 className="hero-title">Quadro Hair - Looking Good, Feeling Good</h1>
-          <h2 className="hero-subtitle">Transform Your Hair*</h2>
+          <h1 className="hero-title">Quadro Hair</h1>
+          <h2 className="hero-subtitle hero-tagline-rotate">{taglines[currentTaglineIndex]}</h2>
           <p className="hero-description">
-            *With Nanoplasty Technology - one of our premium services
+            Weddings • Debutante Balls • Engagements • Special Events • Makeup Services
           </p>
           <div className="hero-buttons">
-            <a href="sms:0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary">📱 Text Mobile</a>
-            <a href="tel:0418533927" className="btn btn-secondary">📞 Call Mobile</a>
-            <a href="tel:95617822" className="btn btn-secondary">☎️ Call Salon</a>
+            <button onClick={() => setShowServiceModal(true)} className="btn btn-primary">📱 Text Mobile</button>
+            <a href="tel:0395617822" className="btn btn-secondary">📞 Call Salon</a>
           </div>
         </div>
         <div className="scroll-indicator">
@@ -151,6 +265,180 @@ function App() {
                   <h3>Brunettes</h3>
                   <p>Rich, dimensional brunette tones from chocolate to caramel</p>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section id="pricing" className="pricing-section">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Our Pricing</h2>
+            <div className="title-underline"></div>
+            <p className="section-subtitle">All prices below are estimates - individual prices determined on consultation</p>
+            <p className="section-subtitle" style={{marginTop: '0.5rem', fontSize: '1rem'}}>📞 CALL <a href="tel:0395617822" style={{color: 'var(--primary-color)', textDecoration: 'none'}}>03 9561 7822</a> TO BOOK TODAY</p>
+          </div>
+
+          <div className="pricing-grid">
+            <div className="pricing-category">
+              <h3>✂️ Cuts</h3>
+              <div className="price-list">
+                <div className="price-item">
+                  <span className="service-name">Ladies</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $70</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Ladies Total Reshape</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $80</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Mens</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $45</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Mens Total Reshape</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $55</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Children</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $35</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Fringe Trim</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $15</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Shave</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $30</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pricing-category">
+              <h3>🎨 Colour</h3>
+              <div className="price-list">
+                <div className="price-item">
+                  <span className="service-name">1/2 Head Foils</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $100</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Semi Permanent</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $65-85</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Permanent Gloss</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $85-150</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Toner</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $55</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pricing-category">
+              <h3>💨 Blow Wave & Styling</h3>
+              <div className="price-list">
+                <div className="price-item">
+                  <span className="service-name">Short Hair</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $45</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Long Hair</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $55</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Curling/Tonging/Hair Up</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $100</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pricing-category">
+              <h3>✨ Treatments</h3>
+              <div className="price-list">
+                <div className="price-item featured-service">
+                  <span className="service-name">Nanoplasty Treatment</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">from $350</span>
+                </div>
+                <div className="price-item">
+                  <span className="service-name">Other Treatments</span>
+                  <span className="price-dots"></span>
+                  <span className="price-value">POA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Gift Vouchers Section */}
+      <section id="gift-vouchers" className="gift-vouchers">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title">Gift Vouchers</h2>
+            <div className="title-underline"></div>
+            <p className="section-subtitle">The Perfect Gift for Someone Special</p>
+          </div>
+          <div className="voucher-content">
+            <div className="voucher-image">
+              <div className="voucher-card-display">
+                <div className="voucher-decoration">🎁</div>
+                <h3>QUADRO HAIR</h3>
+                <p className="voucher-text">Gift Voucher</p>
+                <div className="voucher-amount">Any Amount</div>
+                <p className="voucher-description">Redeemable for all salon services</p>
+              </div>
+            </div>
+            <div className="voucher-info">
+              <h3>Give the Gift of Great Hair</h3>
+              <p>
+                Quadro Hair gift vouchers make the perfect present for birthdays, anniversaries, weddings, or any special occasion. Treat someone you love to a premium salon experience with our expert stylists and colorists.
+              </p>
+              <div className="voucher-features">
+                <div className="voucher-feature">
+                  <span className="feature-icon">💝</span>
+                  <div>
+                    <h4>Any Amount</h4>
+                    <p>Choose any dollar amount that suits your budget</p>
+                  </div>
+                </div>
+                <div className="voucher-feature">
+                  <span className="feature-icon">💈</span>
+                  <div>
+                    <h4>All Services</h4>
+                    <p>Redeemable for cuts, colors, treatments, and styling</p>
+                  </div>
+                </div>
+                <div className="voucher-feature">
+                  <span className="feature-icon">⏰</span>
+                  <div>
+                    <h4>12 Months Valid</h4>
+                    <p>Plenty of time to use your voucher</p>
+                  </div>
+                </div>
+              </div>
+              <div className="voucher-cta">
+                <p style={{marginBottom: '1rem', fontSize: '1.1rem'}}>To purchase a gift voucher:</p>
+                <a href="tel:0395617822" className="btn btn-primary btn-large">📞 Call 03 9561 7822</a>
+                <p style={{marginTop: '1rem', fontSize: '0.9rem', opacity: 0.8}}>Visit us in-store at Brandon Park Shopping Centre</p>
               </div>
             </div>
           </div>
@@ -660,11 +948,12 @@ function App() {
               <div className="contact-card">
                 <div className="contact-icon">⏰</div>
                 <h3>Opening Hours</h3>
-                <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM</p>
-                <p><strong>Saturday:</strong> 9:00 AM - 5:00 PM</p>
+                <p><strong>Monday - Wednesday:</strong> 9:00 AM - 5:00 PM</p>
+                <p><strong>Thursday:</strong> 9:00 AM - 7:00 PM</p>
+                <p><strong>Friday:</strong> 9:00 AM - 5:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 4:00 PM</p>
                 <p><strong>Sunday:</strong> Closed</p>
-                <p style={{marginTop: '1rem', fontSize: '0.9rem'}}>📞 Phone: 9561 7822</p>
-                <p style={{fontSize: '0.9rem'}}>Bookings & Enquiries Welcome</p>
+                <p style={{marginTop: '1rem', fontSize: '0.9rem'}}>Bookings & Enquiries Welcome</p>
               </div>
             </div>
             <div className="contact-cta">
@@ -693,6 +982,143 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* Service Selection Modal */}
+      {showServiceModal && (
+        <div className="modal-overlay" onClick={() => setShowServiceModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setShowServiceModal(false)}>×</button>
+            <h2>Book Your Appointment</h2>
+            <p className="modal-subtitle">Select a service and tell us about yourself</p>
+
+            <div className="booking-form">
+              {/* Service Category Selection */}
+              <div className="form-group">
+                <label>Select Service Category</label>
+                <div className="service-categories">
+                  {Object.keys(serviceCategories).map((category) => (
+                    <div key={category} className="category-wrapper">
+                      <button
+                        className={`category-button ${selectedCategory === category ? 'active' : ''}`}
+                        onClick={() => handleCategoryClick(category)}
+                      >
+                        <span className="category-icon">{serviceCategories[category].icon}</span>
+                        <span className="category-name">{category}</span>
+                        <span className="category-arrow">{selectedCategory === category ? '▼' : '▶'}</span>
+                      </button>
+
+                      {selectedCategory === category && (
+                        <div className="service-options">
+                          {serviceCategories[category].services.map((service) => (
+                            <button
+                              key={service.name}
+                              className={`service-option ${selectedService === service.name ? 'selected' : ''}`}
+                              onClick={() => handleServiceClick(service.name)}
+                            >
+                              <div className="service-name-text">{service.name}</div>
+                              <div className="service-price">{service.price}</div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Name Input */}
+              <div className="form-group">
+                <label htmlFor="clientName">Your Name</label>
+                <input
+                  type="text"
+                  id="clientName"
+                  className="form-input"
+                  placeholder="Enter your name"
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                />
+              </div>
+
+              {/* Date Picker */}
+              <div className="form-group">
+                <label htmlFor="preferredDate">Preferred Date</label>
+                <input
+                  type="date"
+                  id="preferredDate"
+                  className="form-input"
+                  value={preferredDate}
+                  min={getMinDate()}
+                  max={getMaxDate()}
+                  onChange={(e) => setPreferredDate(e.target.value)}
+                />
+              </div>
+
+              {/* Time Slot Selection */}
+              <div className="form-group">
+                <label>Preferred Time</label>
+                <div className="time-slots">
+                  {timeSlots.map((slot) => (
+                    <button
+                      key={slot}
+                      className={`time-slot ${preferredTime === slot ? 'selected' : ''}`}
+                      onClick={() => setPreferredTime(slot)}
+                    >
+                      {slot}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Home Hair Care Products */}
+              <div className="form-group">
+                <label>Interested in Home Hair Care? (Optional)</label>
+                <p style={{fontSize: '0.9rem', opacity: 0.8, margin: '0 0 0.5rem 0'}}>Select products you'd like to ask about</p>
+                <div className="product-selection">
+                  {hairCareProducts.map((product) => (
+                    <button
+                      key={product.name}
+                      className={`product-option ${selectedProducts.includes(product.name) ? 'selected' : ''}`}
+                      onClick={() => toggleProduct(product.name)}
+                    >
+                      <span className="product-icon">{product.icon}</span>
+                      <span className="product-name">{product.name}</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Additional Message */}
+              <div className="form-group">
+                <label htmlFor="clientMessage">Additional Notes (Optional)</label>
+                <textarea
+                  id="clientMessage"
+                  className="form-textarea"
+                  placeholder="Any special requests or questions?"
+                  rows="3"
+                  value={clientMessage}
+                  onChange={(e) => setClientMessage(e.target.value)}
+                ></textarea>
+              </div>
+
+              {/* Send Button */}
+              <a
+                href={`sms:0418533927?&body=${encodeURIComponent(
+                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedService ? `a ${selectedService}` : 'an appointment'}${preferredDate ? ` on ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? ` (${preferredTime})` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\n${clientMessage}` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
+                )}`}
+                className={`btn btn-primary btn-large ${!selectedService || !clientName ? 'btn-disabled' : ''}`}
+                onClick={(e) => {
+                  if (!selectedService || !clientName) {
+                    e.preventDefault();
+                    alert('Please select a service and enter your name');
+                  }
+                }}
+              >
+                📱 Send Text Message
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Footer */}
       <footer className="footer">
