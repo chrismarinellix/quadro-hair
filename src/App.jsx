@@ -948,7 +948,7 @@ function App() {
                 <div className="contact-icon">📱</div>
                 <h3>Text or Call</h3>
                 <a href="tel:0418134509" className="contact-link">0418 134 509</a>
-                <a href="sms:0418134509,0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📱 Send Text Message</a>
+                <a href="sms:0418134509;0418533927;0417035368?body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📱 Send Text Message</a>
                 <p>Message Dominic or Maria</p>
               </div>
               <div className="contact-card map-card">
@@ -996,7 +996,7 @@ function App() {
                     <span className="price-note">Lasts 6-12 months</span>
                   </div>
                 </div>
-                <a href="sms:0418134509,0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary btn-large">
+                <a href="sms:0418134509;0418533927;0417035368?body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary btn-large">
                   📱 Text to Book Now
                 </a>
                 <a href="tel:0418134509" className="btn btn-secondary btn-large" style={{marginTop: '1rem'}}>
@@ -1178,13 +1178,13 @@ function App() {
 
               {/* Send Button */}
               <a
-                href={`sms:0418134509,0418533927?&body=${encodeURIComponent(
-                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedServices.length > 0 ? selectedServices.length === 1 ? `a ${selectedServices[0].name}` : `the following services:\n${selectedServices.map(s => `- ${s.name} (${s.price})`).join('\n')}` : 'an appointment'}${preferredDate ? `\n\nPreferred date: ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? `\nPreferred time: ${preferredTime}` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\nAdditional notes:\n${clientMessage}` : ''}${selectedServices.length > 0 && getTotalPrice() ? `\n\nEstimated total: $${getTotalPrice()} (indicative only - must be confirmed at consultation)` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
+                href={`sms:0418134509?body=${encodeURIComponent(
+                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}${selectedServices.length > 0 ? `I'd love to book the following services:\n${selectedServices.map(s => `- ${s.name} (${s.price})`).join('\n')}\n\n` : ''}${preferredDate ? `Preferred date: ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}\n` : ''}${preferredTime ? `Preferred time: ${preferredTime}.\n` : ''}${selectedProducts.length > 0 ? `\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.\n` : ''}${selectedServices.length > 0 && getTotalPrice() ? `\nEstimated total: $${getTotalPrice()} (indicative only - must be confirmed at consultation)\n` : ''}${clientMessage ? `\nAdditional notes:\n${clientMessage}\n` : ''}\nPlease let me know if this works for you.\n\nThank you!`
                 )}`}
                 className="btn btn-primary btn-large"
                 onClick={handleSendClick}
               >
-                📱 Send Text Message
+                📱 Send SMS
               </a>
             </div>
           </div>
