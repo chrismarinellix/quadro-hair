@@ -7,7 +7,7 @@ function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0)
   const [showServiceModal, setShowServiceModal] = useState(false)
-  const [selectedService, setSelectedService] = useState('')
+  const [selectedServices, setSelectedServices] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
   const [clientName, setClientName] = useState('')
   const [clientMessage, setClientMessage] = useState('')
@@ -46,43 +46,43 @@ function App() {
     'Cuts': {
       icon: '✂️',
       services: [
-        { name: 'Ladies Cut', price: 'from $70' },
-        { name: 'Ladies Total Reshape', price: 'from $80' },
-        { name: 'Mens Cut', price: 'from $45' },
-        { name: 'Mens Total Reshape', price: 'from $55' },
-        { name: 'Children Cut', price: 'from $35' },
-        { name: 'Fringe Trim', price: 'from $15' },
-        { name: 'Shave', price: 'from $30' }
+        { name: 'Ladies Cut', price: 'from $70', priceValue: 70 },
+        { name: 'Ladies Total Reshape', price: 'from $80', priceValue: 80 },
+        { name: 'Mens Cut', price: 'from $45', priceValue: 45 },
+        { name: 'Mens Total Reshape', price: 'from $55', priceValue: 55 },
+        { name: 'Children Cut', price: 'from $35', priceValue: 35 },
+        { name: 'Fringe Trim', price: 'from $15', priceValue: 15 },
+        { name: 'Shave', price: 'from $30', priceValue: 30 }
       ]
     },
     'Colour': {
       icon: '🎨',
       services: [
-        { name: 'Full Head Foils', price: 'from $150' },
-        { name: 'Half Head Foils', price: 'from $100' },
-        { name: 'Balayage', price: 'from $180' },
-        { name: 'Lived-in Colour', price: 'from $160' },
-        { name: 'Blonde Specialists', price: 'from $200' },
-        { name: 'Brunettes', price: 'from $150' },
-        { name: 'Semi Permanent', price: 'from $65' },
-        { name: 'Permanent Gloss', price: 'from $85' },
-        { name: 'Toner', price: 'from $55' }
+        { name: 'Full Head Foils', price: 'from $150', priceValue: 150 },
+        { name: 'Half Head Foils', price: 'from $100', priceValue: 100 },
+        { name: 'Balayage', price: 'from $180', priceValue: 180 },
+        { name: 'Lived-in Colour', price: 'from $160', priceValue: 160 },
+        { name: 'Blonde Specialists', price: 'from $200', priceValue: 200 },
+        { name: 'Brunettes', price: 'from $150', priceValue: 150 },
+        { name: 'Semi Permanent', price: 'from $65', priceValue: 65 },
+        { name: 'Permanent Gloss', price: 'from $85', priceValue: 85 },
+        { name: 'Toner', price: 'from $55', priceValue: 55 }
       ]
     },
     'Blow Wave & Styling': {
       icon: '💨',
       services: [
-        { name: 'Short Hair Blow Wave', price: 'from $45' },
-        { name: 'Long Hair Blow Wave', price: 'from $55' },
-        { name: 'Curling/Tonging', price: 'from $100' },
-        { name: 'Hair Up Style', price: 'from $100' }
+        { name: 'Short Hair Blow Wave', price: 'from $45', priceValue: 45 },
+        { name: 'Long Hair Blow Wave', price: 'from $55', priceValue: 55 },
+        { name: 'Curling/Tonging', price: 'from $100', priceValue: 100 },
+        { name: 'Hair Up Style', price: 'from $100', priceValue: 100 }
       ]
     },
     'Treatments': {
       icon: '✨',
       services: [
-        { name: 'Nanoplasty Treatment', price: 'from $350' },
-        { name: 'Other Treatments', price: 'POA' }
+        { name: 'Nanoplasty Treatment', price: 'from $350', priceValue: 350 },
+        { name: 'Other Treatments', price: 'POA', priceValue: 0 }
       ]
     }
   }
@@ -115,34 +115,26 @@ function App() {
     return maxDate.toISOString().split('T')[0]
   }
 
-  const handleCategoryClick = (category) => {
-    setSelectedCategory(selectedCategory === category ? '' : category)
-    setSelectedService('')
-  }
-
-  const handleServiceClick = (serviceName) => {
-    setSelectedService(serviceName)
+  // Toggle service selection (checkbox style)
+  const toggleService = (service) => {
+    const isSelected = selectedServices.some(s => s.name === service.name)
+    if (isSelected) {
+      setSelectedServices(selectedServices.filter(s => s.name !== service.name))
+    } else {
+      setSelectedServices([...selectedServices, service])
+    }
     setShowValidationWarning(false)
   }
 
-  // Calculate estimated price
-  const getEstimatedPrice = () => {
-    if (!selectedService) return null
-
-    for (const category of Object.values(serviceCategories)) {
-      const service = category.services.find(s => s.name === selectedService)
-      if (service) {
-        // Extract numeric value from price string (e.g., "from $70" -> 70)
-        const match = service.price.match(/\$(\d+)/)
-        return match ? parseInt(match[1]) : null
-      }
-    }
-    return null
+  // Calculate total price from all selected services
+  const getTotalPrice = () => {
+    if (selectedServices.length === 0) return null
+    return selectedServices.reduce((total, service) => total + service.priceValue, 0)
   }
 
   const getMissingFields = () => {
     const missing = []
-    if (!selectedService) missing.push('Service')
+    if (selectedServices.length === 0) missing.push('Service')
     if (!clientName) missing.push('Name')
     if (!preferredDate) missing.push('Date')
     if (!preferredTime) missing.push('Time')
@@ -955,8 +947,8 @@ function App() {
               <div className="contact-card">
                 <div className="contact-icon">📱</div>
                 <h3>Text or Call</h3>
-                <a href="tel:0418533927" className="contact-link">0418 533 927</a>
-                <a href="sms:0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📱 Send Text Message</a>
+                <a href="tel:0418134509" className="contact-link">0418 134 509</a>
+                <a href="sms:0418134509,0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📱 Send Text Message</a>
                 <p>Message Dominic or Maria</p>
               </div>
               <div className="contact-card map-card">
@@ -1004,11 +996,11 @@ function App() {
                     <span className="price-note">Lasts 6-12 months</span>
                   </div>
                 </div>
-                <a href="sms:0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary btn-large">
+                <a href="sms:0418134509,0418533927?&body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary btn-large">
                   📱 Text to Book Now
                 </a>
-                <a href="tel:0418533927" className="btn btn-secondary btn-large" style={{marginTop: '1rem'}}>
-                  📞 Or Call 0418 533 927
+                <a href="tel:0418134509" className="btn btn-secondary btn-large" style={{marginTop: '1rem'}}>
+                  📞 Or Call 0418 134 509
                 </a>
                 <p className="cta-footnote">Message or call Dominic and Maria - Your hair transformation experts</p>
               </div>
@@ -1028,7 +1020,7 @@ function App() {
             <div className="booking-form">
               {/* Service Selection */}
               <div className="form-group">
-                <label>Select Service{!selectedService && showValidationWarning && <span className="field-required"> *</span>}</label>
+                <label>Select Services (Multiple Selection Allowed){selectedServices.length === 0 && showValidationWarning && <span className="field-required"> *</span>}</label>
                 <div className="services-grid">
                   {Object.keys(serviceCategories).map((category) => (
                     <div key={category} className="service-category-section">
@@ -1040,14 +1032,14 @@ function App() {
                         {serviceCategories[category].services.map((service) => (
                           <label
                             key={service.name}
-                            className={`service-radio-option ${selectedService === service.name ? 'selected' : ''}`}
+                            className={`service-radio-option ${selectedServices.some(s => s.name === service.name) ? 'selected' : ''}`}
                           >
                             <input
-                              type="radio"
+                              type="checkbox"
                               name="service"
                               value={service.name}
-                              checked={selectedService === service.name}
-                              onChange={() => handleServiceClick(service.name)}
+                              checked={selectedServices.some(s => s.name === service.name)}
+                              onChange={() => toggleService(service)}
                               className="service-radio-input"
                             />
                             <div className="service-radio-content">
@@ -1148,14 +1140,26 @@ function App() {
                 ></textarea>
               </div>
 
-              {/* Estimated Cost Display */}
-              {selectedService && getEstimatedPrice() && (
+              {/* Estimated Total Price Display */}
+              {selectedServices.length > 0 && getTotalPrice() && (
                 <div className="estimated-cost-box">
                   <div className="cost-icon">💰</div>
                   <div className="cost-details">
-                    <div className="cost-label">Estimated Cost</div>
-                    <div className="cost-amount">${getEstimatedPrice()}</div>
-                    <div className="cost-disclaimer">Price is indicative only and must be confirmed at consultation</div>
+                    <div className="cost-label">Estimated Total Price</div>
+                    <div className="cost-amount">${getTotalPrice()}</div>
+                    <div className="cost-disclaimer">
+                      {selectedServices.length > 1 && (
+                        <div style={{fontSize: '0.85rem', marginBottom: '0.5rem'}}>
+                          {selectedServices.map((s, idx) => (
+                            <span key={s.name}>
+                              {s.name} (${s.priceValue})
+                              {idx < selectedServices.length - 1 ? ' + ' : ''}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      Price is indicative only and must be confirmed at consultation
+                    </div>
                   </div>
                 </div>
               )}
@@ -1174,8 +1178,8 @@ function App() {
 
               {/* Send Button */}
               <a
-                href={`sms:0418533927?&body=${encodeURIComponent(
-                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedService ? `a ${selectedService}` : 'an appointment'}${preferredDate ? ` on ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? ` (${preferredTime})` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\n${clientMessage}` : ''}${selectedService && getEstimatedPrice() ? `\n\nEstimated cost: $${getEstimatedPrice()} (indicative only - must be confirmed at consultation)` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
+                href={`sms:0418134509,0418533927?&body=${encodeURIComponent(
+                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedServices.length > 0 ? selectedServices.length === 1 ? `a ${selectedServices[0].name}` : `the following services:\n${selectedServices.map(s => `- ${s.name} (${s.price})`).join('\n')}` : 'an appointment'}${preferredDate ? `\n\nPreferred date: ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? `\nPreferred time: ${preferredTime}` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\nAdditional notes:\n${clientMessage}` : ''}${selectedServices.length > 0 && getTotalPrice() ? `\n\nEstimated total: $${getTotalPrice()} (indicative only - must be confirmed at consultation)` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
                 )}`}
                 className="btn btn-primary btn-large"
                 onClick={handleSendClick}
@@ -1198,7 +1202,7 @@ function App() {
               <p>Springvale Rd & Ferntree Gully Rd, Mulgrave VIC 3170</p>
             </div>
             <div className="footer-contact">
-              <p><strong>Mobile:</strong> 0418 533 927</p>
+              <p><strong>Mobile:</strong> 0418 134 509</p>
               <p><strong>Salon:</strong> 9561 7822</p>
               <p><strong>Contact:</strong> Dominic or Maria</p>
               <p style={{marginTop: '1rem'}}><strong>Follow Us:</strong></p>
