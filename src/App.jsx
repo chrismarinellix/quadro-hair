@@ -14,6 +14,7 @@ function App() {
   const [preferredDate, setPreferredDate] = useState('')
   const [preferredTime, setPreferredTime] = useState('')
   const [selectedProducts, setSelectedProducts] = useState([])
+  const [showValidationWarning, setShowValidationWarning] = useState(false)
 
   const heroImages = [
     '/straight-hair-brunette.png',
@@ -121,6 +122,24 @@ function App() {
 
   const handleServiceClick = (serviceName) => {
     setSelectedService(serviceName)
+    setShowValidationWarning(false)
+  }
+
+  const getMissingFields = () => {
+    const missing = []
+    if (!selectedService) missing.push('Service')
+    if (!clientName) missing.push('Name')
+    if (!preferredDate) missing.push('Date')
+    if (!preferredTime) missing.push('Time')
+    return missing
+  }
+
+  const handleSendClick = (e) => {
+    const missingFields = getMissingFields()
+    if (missingFields.length > 0) {
+      setShowValidationWarning(true)
+      // Still allow sending, just show the warning
+    }
   }
 
   // Carousel effect - change image every 5 seconds
@@ -992,35 +1011,40 @@ function App() {
             <p className="modal-subtitle">Select a service and tell us about yourself</p>
 
             <div className="booking-form">
-              {/* Service Category Selection */}
+              {/* Service Selection */}
               <div className="form-group">
-                <label>Select Service Category</label>
-                <div className="service-categories">
+                <label>Select Service{!selectedService && showValidationWarning && <span className="field-required"> *</span>}</label>
+                <div className="services-grid">
                   {Object.keys(serviceCategories).map((category) => (
-                    <div key={category} className="category-wrapper">
-                      <button
-                        className={`category-button ${selectedCategory === category ? 'active' : ''}`}
-                        onClick={() => handleCategoryClick(category)}
-                      >
-                        <span className="category-icon">{serviceCategories[category].icon}</span>
-                        <span className="category-name">{category}</span>
-                        <span className="category-arrow">{selectedCategory === category ? '▼' : '▶'}</span>
-                      </button>
-
-                      {selectedCategory === category && (
-                        <div className="service-options">
-                          {serviceCategories[category].services.map((service) => (
-                            <button
-                              key={service.name}
-                              className={`service-option ${selectedService === service.name ? 'selected' : ''}`}
-                              onClick={() => handleServiceClick(service.name)}
-                            >
-                              <div className="service-name-text">{service.name}</div>
-                              <div className="service-price">{service.price}</div>
-                            </button>
-                          ))}
-                        </div>
-                      )}
+                    <div key={category} className="service-category-section">
+                      <div className="category-header">
+                        <span className="category-header-icon">{serviceCategories[category].icon}</span>
+                        <span className="category-header-title">{category}</span>
+                      </div>
+                      <div className="service-radio-group">
+                        {serviceCategories[category].services.map((service) => (
+                          <label
+                            key={service.name}
+                            className={`service-radio-option ${selectedService === service.name ? 'selected' : ''}`}
+                          >
+                            <input
+                              type="radio"
+                              name="service"
+                              value={service.name}
+                              checked={selectedService === service.name}
+                              onChange={() => handleServiceClick(service.name)}
+                              className="service-radio-input"
+                            />
+                            <div className="service-radio-content">
+                              <div className="service-radio-check"></div>
+                              <div className="service-radio-details">
+                                <div className="service-radio-name">{service.name}</div>
+                                <div className="service-radio-price">{service.price}</div>
+                              </div>
+                            </div>
+                          </label>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -1028,40 +1052,49 @@ function App() {
 
               {/* Name Input */}
               <div className="form-group">
-                <label htmlFor="clientName">Your Name</label>
+                <label htmlFor="clientName">Your Name{!clientName && showValidationWarning && <span className="field-required"> *</span>}</label>
                 <input
                   type="text"
                   id="clientName"
-                  className="form-input"
+                  className={`form-input ${!clientName && showValidationWarning ? 'field-missing' : ''}`}
                   placeholder="Enter your name"
                   value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
+                  onChange={(e) => {
+                    setClientName(e.target.value)
+                    setShowValidationWarning(false)
+                  }}
                 />
               </div>
 
               {/* Date Picker */}
               <div className="form-group">
-                <label htmlFor="preferredDate">Preferred Date</label>
+                <label htmlFor="preferredDate">Preferred Date{!preferredDate && showValidationWarning && <span className="field-required"> *</span>}</label>
                 <input
                   type="date"
                   id="preferredDate"
-                  className="form-input"
+                  className={`form-input ${!preferredDate && showValidationWarning ? 'field-missing' : ''}`}
                   value={preferredDate}
                   min={getMinDate()}
                   max={getMaxDate()}
-                  onChange={(e) => setPreferredDate(e.target.value)}
+                  onChange={(e) => {
+                    setPreferredDate(e.target.value)
+                    setShowValidationWarning(false)
+                  }}
                 />
               </div>
 
               {/* Time Slot Selection */}
               <div className="form-group">
-                <label>Preferred Time</label>
+                <label>Preferred Time{!preferredTime && showValidationWarning && <span className="field-required"> *</span>}</label>
                 <div className="time-slots">
                   {timeSlots.map((slot) => (
                     <button
                       key={slot}
                       className={`time-slot ${preferredTime === slot ? 'selected' : ''}`}
-                      onClick={() => setPreferredTime(slot)}
+                      onClick={() => {
+                        setPreferredTime(slot)
+                        setShowValidationWarning(false)
+                      }}
                     >
                       {slot}
                     </button>
@@ -1100,18 +1133,25 @@ function App() {
                 ></textarea>
               </div>
 
+              {/* Validation Warning */}
+              {showValidationWarning && getMissingFields().length > 0 && (
+                <div className="validation-warning">
+                  <div className="warning-icon">⚠️</div>
+                  <div className="warning-content">
+                    <strong>Missing Information:</strong>
+                    <p>The following fields are not filled in: <strong>{getMissingFields().join(', ')}</strong></p>
+                    <p style={{fontSize: '0.9rem', opacity: 0.9, marginTop: '0.5rem'}}>You can still send the message, but filling these in helps us serve you better!</p>
+                  </div>
+                </div>
+              )}
+
               {/* Send Button */}
               <a
                 href={`sms:0418533927?&body=${encodeURIComponent(
                   `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}I'd love to book ${selectedService ? `a ${selectedService}` : 'an appointment'}${preferredDate ? ` on ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}` : ''}${preferredTime ? ` (${preferredTime})` : ''}.${selectedProducts.length > 0 ? `\n\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.` : ''}${clientMessage ? `\n\n${clientMessage}` : ''}\n\nPlease let me know if this works for you.\n\nThank you!`
                 )}`}
-                className={`btn btn-primary btn-large ${!selectedService || !clientName ? 'btn-disabled' : ''}`}
-                onClick={(e) => {
-                  if (!selectedService || !clientName) {
-                    e.preventDefault();
-                    alert('Please select a service and enter your name');
-                  }
-                }}
+                className="btn btn-primary btn-large"
+                onClick={handleSendClick}
               >
                 📱 Send Text Message
               </a>
