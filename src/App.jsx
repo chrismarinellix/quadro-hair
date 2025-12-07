@@ -1178,7 +1178,7 @@ function App() {
 
               {/* Send Button */}
               <a
-                href={`sms:0418533927?body=${encodeURIComponent(
+                href={`sms:0418533927;0417035368?body=${encodeURIComponent(
                   `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}${selectedServices.length > 0 ? `I'd love to book the following services:\n${selectedServices.map(s => `- ${s.name} (${s.price})`).join('\n')}\n\n` : ''}${preferredDate ? `Preferred date: ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}\n` : ''}${preferredTime ? `Preferred time: ${preferredTime}.\n` : ''}${selectedProducts.length > 0 ? `\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.\n` : ''}${selectedServices.length > 0 && getTotalPrice() ? `\nEstimated total: $${getTotalPrice()} (indicative only - must be confirmed at consultation)\n` : ''}${clientMessage ? `\nAdditional notes:\n${clientMessage}\n` : ''}\nPlease let me know if this works for you.\n\nThank you!`
                 )}`}
                 className="btn btn-primary btn-large"
