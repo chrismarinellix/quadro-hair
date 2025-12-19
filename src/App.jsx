@@ -6,15 +6,6 @@ function App() {
   const [activeTab, setActiveTab] = useState('benefits')
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [currentTaglineIndex, setCurrentTaglineIndex] = useState(0)
-  const [showServiceModal, setShowServiceModal] = useState(false)
-  const [selectedServices, setSelectedServices] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState('')
-  const [clientName, setClientName] = useState('')
-  const [clientMessage, setClientMessage] = useState('')
-  const [preferredDate, setPreferredDate] = useState('')
-  const [preferredTime, setPreferredTime] = useState('')
-  const [selectedProducts, setSelectedProducts] = useState([])
-  const [showValidationWarning, setShowValidationWarning] = useState(false)
 
   const heroImages = [
     '/straight-hair-brunette.png',
@@ -41,113 +32,6 @@ function App() {
     "Date Night Perfection",
     "Because You Deserve Great Hair"
   ]
-
-  const serviceCategories = {
-    'Cuts': {
-      icon: '✂️',
-      services: [
-        { name: 'Ladies Cut', price: 'from $70', priceValue: 70 },
-        { name: 'Ladies Total Reshape', price: 'from $80', priceValue: 80 },
-        { name: 'Mens Cut', price: 'from $45', priceValue: 45 },
-        { name: 'Mens Total Reshape', price: 'from $55', priceValue: 55 },
-        { name: 'Children Cut', price: 'from $35', priceValue: 35 },
-        { name: 'Fringe Trim', price: 'from $15', priceValue: 15 },
-        { name: 'Shave', price: 'from $30', priceValue: 30 }
-      ]
-    },
-    'Colour': {
-      icon: '🎨',
-      services: [
-        { name: 'Full Head Foils', price: 'from $150', priceValue: 150 },
-        { name: 'Half Head Foils', price: 'from $100', priceValue: 100 },
-        { name: 'Balayage', price: 'from $180', priceValue: 180 },
-        { name: 'Lived-in Colour', price: 'from $160', priceValue: 160 },
-        { name: 'Blonde Specialists', price: 'from $200', priceValue: 200 },
-        { name: 'Brunettes', price: 'from $150', priceValue: 150 },
-        { name: 'Semi Permanent', price: 'from $65', priceValue: 65 },
-        { name: 'Permanent Gloss', price: 'from $85', priceValue: 85 },
-        { name: 'Toner', price: 'from $55', priceValue: 55 }
-      ]
-    },
-    'Blow Wave & Styling': {
-      icon: '💨',
-      services: [
-        { name: 'Short Hair Blow Wave', price: 'from $45', priceValue: 45 },
-        { name: 'Long Hair Blow Wave', price: 'from $55', priceValue: 55 },
-        { name: 'Curling/Tonging', price: 'from $100', priceValue: 100 },
-        { name: 'Hair Up Style', price: 'from $100', priceValue: 100 }
-      ]
-    },
-    'Treatments': {
-      icon: '✨',
-      services: [
-        { name: 'Nanoplasty Treatment', price: 'from $350', priceValue: 350 },
-        { name: 'Other Treatments', price: 'POA', priceValue: 0 }
-      ]
-    }
-  }
-
-  const timeSlots = ['Morning (9am-12pm)', 'Afternoon (12pm-3pm)', 'Late Afternoon (3pm-5pm)', 'Evening (5pm-7pm)']
-
-  const hairCareProducts = [
-    { name: 'Shampoo', icon: '🧴' },
-    { name: 'Conditioner', icon: '💧' }
-  ]
-
-  const toggleProduct = (productName) => {
-    if (selectedProducts.includes(productName)) {
-      setSelectedProducts(selectedProducts.filter(p => p !== productName))
-    } else {
-      setSelectedProducts([...selectedProducts, productName])
-    }
-  }
-
-  // Get minimum date (today)
-  const getMinDate = () => {
-    const today = new Date()
-    return today.toISOString().split('T')[0]
-  }
-
-  // Get maximum date (3 months from now)
-  const getMaxDate = () => {
-    const today = new Date()
-    const maxDate = new Date(today.setMonth(today.getMonth() + 3))
-    return maxDate.toISOString().split('T')[0]
-  }
-
-  // Toggle service selection (checkbox style)
-  const toggleService = (service) => {
-    const isSelected = selectedServices.some(s => s.name === service.name)
-    if (isSelected) {
-      setSelectedServices(selectedServices.filter(s => s.name !== service.name))
-    } else {
-      setSelectedServices([...selectedServices, service])
-    }
-    setShowValidationWarning(false)
-  }
-
-  // Calculate total price from all selected services
-  const getTotalPrice = () => {
-    if (selectedServices.length === 0) return null
-    return selectedServices.reduce((total, service) => total + service.priceValue, 0)
-  }
-
-  const getMissingFields = () => {
-    const missing = []
-    if (selectedServices.length === 0) missing.push('Service')
-    if (!clientName) missing.push('Name')
-    if (!preferredDate) missing.push('Date')
-    if (!preferredTime) missing.push('Time')
-    return missing
-  }
-
-  const handleSendClick = (e) => {
-    const missingFields = getMissingFields()
-    if (missingFields.length > 0) {
-      setShowValidationWarning(true)
-      // Still allow sending, just show the warning
-    }
-  }
 
   // Carousel effect - change image every 5 seconds
   useEffect(() => {
@@ -206,8 +90,7 @@ function App() {
             Weddings • Debutante Balls • Engagements • Special Events • Makeup Services
           </p>
           <div className="hero-buttons">
-            <button onClick={() => setShowServiceModal(true)} className="btn btn-primary">📱 Text Mobile</button>
-            <a href="tel:0395617822" className="btn btn-secondary">📞 Call Salon</a>
+            <a href="tel:0395617822" className="btn btn-primary">📞 Call Salon</a>
           </div>
         </div>
         <div className="scroll-indicator">
@@ -945,11 +828,11 @@ function App() {
           <div className="contact-content">
             <div className="contact-info">
               <div className="contact-card">
-                <div className="contact-icon">📱</div>
-                <h3>Text or Call</h3>
+                <div className="contact-icon">📞</div>
+                <h3>Call Us</h3>
                 <a href="tel:0418134509" className="contact-link">0418 134 509</a>
-                <a href="sms:0418134509;0418533927;0417035368?body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📱 Send Text Message</a>
-                <p>Message Dominic or Maria</p>
+                <a href="tel:0395617822" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📞 Call Salon</a>
+                <p>Contact Dominic or Maria</p>
               </div>
               <div className="contact-card map-card">
                 <div className="contact-icon">📍</div>
@@ -996,200 +879,18 @@ function App() {
                     <span className="price-note">Lasts 6-12 months</span>
                   </div>
                 </div>
-                <a href="sms:0418134509;0418533927;0417035368?body=Hi%20Dom%20and%20Maria%2C%0A%0AI'd%20love%20to%20book%20an%20appointment.%20Please%20let%20me%20know%20what%20times%20you%20have%20available.%0A%0AThank%20you!" className="btn btn-primary btn-large">
-                  📱 Text to Book Now
+                <a href="tel:0395617822" className="btn btn-primary btn-large">
+                  📞 Call to Book Now
                 </a>
                 <a href="tel:0418134509" className="btn btn-secondary btn-large" style={{marginTop: '1rem'}}>
-                  📞 Or Call 0418 134 509
+                  📞 Or Call Mobile 0418 134 509
                 </a>
-                <p className="cta-footnote">Message or call Dominic and Maria - Your hair transformation experts</p>
+                <p className="cta-footnote">Call Dominic and Maria - Your hair transformation experts</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      {/* Service Selection Modal */}
-      {showServiceModal && (
-        <div className="modal-overlay" onClick={() => setShowServiceModal(false)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setShowServiceModal(false)}>×</button>
-            <h2>Book Your Appointment</h2>
-            <p className="modal-subtitle">Select a service and tell us about yourself</p>
-
-            <div className="booking-form">
-              {/* Service Selection */}
-              <div className="form-group">
-                <label>Select Services (Multiple Selection Allowed){selectedServices.length === 0 && showValidationWarning && <span className="field-required"> *</span>}</label>
-                <div className="services-grid">
-                  {Object.keys(serviceCategories).map((category) => (
-                    <div key={category} className="service-category-section">
-                      <div className="category-header">
-                        <span className="category-header-icon">{serviceCategories[category].icon}</span>
-                        <span className="category-header-title">{category}</span>
-                      </div>
-                      <div className="service-radio-group">
-                        {serviceCategories[category].services.map((service) => (
-                          <label
-                            key={service.name}
-                            className={`service-radio-option ${selectedServices.some(s => s.name === service.name) ? 'selected' : ''}`}
-                          >
-                            <input
-                              type="checkbox"
-                              name="service"
-                              value={service.name}
-                              checked={selectedServices.some(s => s.name === service.name)}
-                              onChange={() => toggleService(service)}
-                              className="service-radio-input"
-                            />
-                            <div className="service-radio-content">
-                              <div className="service-radio-check"></div>
-                              <div className="service-radio-details">
-                                <div className="service-radio-name">{service.name}</div>
-                                <div className="service-radio-price">{service.price}</div>
-                              </div>
-                            </div>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Name Input */}
-              <div className="form-group">
-                <label htmlFor="clientName">Your Name{!clientName && showValidationWarning && <span className="field-required"> *</span>}</label>
-                <input
-                  type="text"
-                  id="clientName"
-                  className={`form-input ${!clientName && showValidationWarning ? 'field-missing' : ''}`}
-                  placeholder="Enter your name"
-                  value={clientName}
-                  onChange={(e) => {
-                    setClientName(e.target.value)
-                    setShowValidationWarning(false)
-                  }}
-                />
-              </div>
-
-              {/* Date Picker */}
-              <div className="form-group">
-                <label htmlFor="preferredDate">Preferred Date{!preferredDate && showValidationWarning && <span className="field-required"> *</span>}</label>
-                <input
-                  type="date"
-                  id="preferredDate"
-                  className={`form-input ${!preferredDate && showValidationWarning ? 'field-missing' : ''}`}
-                  value={preferredDate}
-                  min={getMinDate()}
-                  max={getMaxDate()}
-                  onChange={(e) => {
-                    setPreferredDate(e.target.value)
-                    setShowValidationWarning(false)
-                  }}
-                />
-              </div>
-
-              {/* Time Slot Selection */}
-              <div className="form-group">
-                <label>Preferred Time{!preferredTime && showValidationWarning && <span className="field-required"> *</span>}</label>
-                <div className="time-slots">
-                  {timeSlots.map((slot) => (
-                    <button
-                      key={slot}
-                      className={`time-slot ${preferredTime === slot ? 'selected' : ''}`}
-                      onClick={() => {
-                        setPreferredTime(slot)
-                        setShowValidationWarning(false)
-                      }}
-                    >
-                      {slot}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Home Hair Care Products */}
-              <div className="form-group">
-                <label>Interested in Home Hair Care? (Optional)</label>
-                <p style={{fontSize: '0.9rem', opacity: 0.8, margin: '0 0 0.5rem 0'}}>Select products you'd like to ask about</p>
-                <div className="product-selection">
-                  {hairCareProducts.map((product) => (
-                    <button
-                      key={product.name}
-                      className={`product-option ${selectedProducts.includes(product.name) ? 'selected' : ''}`}
-                      onClick={() => toggleProduct(product.name)}
-                    >
-                      <span className="product-icon">{product.icon}</span>
-                      <span className="product-name">{product.name}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Additional Message */}
-              <div className="form-group">
-                <label htmlFor="clientMessage">Additional Notes (Optional)</label>
-                <textarea
-                  id="clientMessage"
-                  className="form-textarea"
-                  placeholder="Any special requests or questions?"
-                  rows="3"
-                  value={clientMessage}
-                  onChange={(e) => setClientMessage(e.target.value)}
-                ></textarea>
-              </div>
-
-              {/* Estimated Total Price Display */}
-              {selectedServices.length > 0 && getTotalPrice() && (
-                <div className="estimated-cost-box">
-                  <div className="cost-icon">💰</div>
-                  <div className="cost-details">
-                    <div className="cost-label">Estimated Total Price</div>
-                    <div className="cost-amount">${getTotalPrice()}</div>
-                    <div className="cost-disclaimer">
-                      {selectedServices.length > 1 && (
-                        <div style={{fontSize: '0.85rem', marginBottom: '0.5rem'}}>
-                          {selectedServices.map((s, idx) => (
-                            <span key={s.name}>
-                              {s.name} (${s.priceValue})
-                              {idx < selectedServices.length - 1 ? ' + ' : ''}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      Price is indicative only and must be confirmed at consultation
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Validation Warning */}
-              {showValidationWarning && getMissingFields().length > 0 && (
-                <div className="validation-warning">
-                  <div className="warning-icon">⚠️</div>
-                  <div className="warning-content">
-                    <strong>Missing Information:</strong>
-                    <p>The following fields are not filled in: <strong>{getMissingFields().join(', ')}</strong></p>
-                    <p style={{fontSize: '0.9rem', opacity: 0.9, marginTop: '0.5rem'}}>You can still send the message, but filling these in helps us serve you better!</p>
-                  </div>
-                </div>
-              )}
-
-              {/* Send Button */}
-              <a
-                href={`sms:0418533927?body=${encodeURIComponent(
-                  `Hi Dom and Maria,\n\n${clientName ? `My name is ${clientName}.\n\n` : ''}${selectedServices.length > 0 ? `I'd love to book the following services:\n${selectedServices.map(s => `- ${s.name} (${s.price})`).join('\n')}\n\n` : ''}${preferredDate ? `Preferred date: ${new Date(preferredDate + 'T00:00:00').toLocaleDateString('en-AU', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}\n` : ''}${preferredTime ? `Preferred time: ${preferredTime}.\n` : ''}${selectedProducts.length > 0 ? `\nI'm also interested in learning more about: ${selectedProducts.join(' and ')}.\n` : ''}${selectedServices.length > 0 && getTotalPrice() ? `\nEstimated total: $${getTotalPrice()} (indicative only - must be confirmed at consultation)\n` : ''}${clientMessage ? `\nAdditional notes:\n${clientMessage}\n` : ''}\nPlease let me know if this works for you.\n\nThank you!`
-                )}`}
-                className="btn btn-primary btn-large"
-                onClick={handleSendClick}
-              >
-                📱 Send SMS
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Footer */}
       <footer className="footer">
