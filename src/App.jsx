@@ -830,7 +830,7 @@ function App() {
               <div className="contact-card">
                 <div className="contact-icon">📞</div>
                 <h3>Call Us</h3>
-                <a href="tel:0418134509" className="contact-link">0418 134 509</a>
+                <a href="tel:0395617822" className="contact-link">03 9561 7822</a>
                 <a href="tel:0395617822" className="btn btn-primary" style={{marginTop: '1rem', fontSize: '0.9rem'}}>📞 Call Salon</a>
                 <p>Contact Dominic or Maria</p>
               </div>
@@ -882,9 +882,6 @@ function App() {
                 <a href="tel:0395617822" className="btn btn-primary btn-large">
                   📞 Call to Book Now
                 </a>
-                <a href="tel:0418134509" className="btn btn-secondary btn-large" style={{marginTop: '1rem'}}>
-                  📞 Or Call Mobile 0418 134 509
-                </a>
                 <p className="cta-footnote">Call Dominic and Maria - Your hair transformation experts</p>
               </div>
             </div>
@@ -903,8 +900,7 @@ function App() {
               <p>Springvale Rd & Ferntree Gully Rd, Mulgrave VIC 3170</p>
             </div>
             <div className="footer-contact">
-              <p><strong>Mobile:</strong> 0418 134 509</p>
-              <p><strong>Salon:</strong> 9561 7822</p>
+              <p><strong>Salon:</strong> 03 9561 7822</p>
               <p><strong>Contact:</strong> Dominic or Maria</p>
               <p style={{marginTop: '1rem'}}><strong>Follow Us:</strong></p>
               <p>📱 Instagram: @quadrohairteam</p>
