@@ -60,7 +60,9 @@ function App() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="nav-container">
-          <div className="logo">QUADRO HAIR</div>
+          <a href="#home" className="logo">
+            <img src="/quadro-logo.jpg" alt="Quadro Hair" className="logo-image" />
+          </a>
           <div className="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -75,13 +77,15 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="hero">
-        <div
-          className="hero-background-image"
-          style={{
-            backgroundImage: `url(${heroImages[currentImageIndex]})`,
-            transition: 'background-image 1s ease-in-out'
-          }}
-        ></div>
+        <video
+          className="hero-video"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/hero-video.mp4" type="video/mp4" />
+        </video>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <h1 className="hero-title">Quadro Hair</h1>
@@ -123,6 +127,14 @@ function App() {
                 className="about-real-image"
               />
             </div>
+          </div>
+          <div className="salon-showcase">
+            <img
+              src="/salon-front.jpg"
+              alt="Quadro Hair Salon at Brandon Park Shopping Centre"
+              className="salon-image"
+            />
+            <p className="salon-caption">Our salon at Brandon Park Shopping Centre</p>
           </div>
         </div>
       </section>
@@ -875,7 +887,7 @@ function App() {
                 <div className="pricing-info">
                   <div className="price-badge">
                     <span className="price-label">Investment</span>
-                    <span className="price-value">Starting from $350</span>
+                    <span className="price-value" style={{color: '#ffffff'}}>Starting from $350</span>
                     <span className="price-note">Lasts 6-12 months</span>
                   </div>
                 </div>
@@ -894,7 +906,7 @@ function App() {
         <div className="container">
           <div className="footer-content">
             <div className="footer-brand">
-              <h3>QUADRO HAIR</h3>
+              <img src="/quadro-logo.jpg" alt="Quadro Hair" className="footer-logo" />
               <p>Melbourne's Premier Hair Specialists</p>
               <p>Brandon Park Shopping Centre (Next to NAB)</p>
               <p>Springvale Rd & Ferntree Gully Rd, Mulgrave VIC 3170</p>
@@ -902,8 +914,15 @@ function App() {
             <div className="footer-contact">
               <p><strong>Salon:</strong> 03 9561 7822</p>
               <p><strong>Contact:</strong> Dominic or Maria</p>
-              <p style={{marginTop: '1rem'}}><strong>Follow Us:</strong></p>
-              <p>📱 Instagram: @quadrohairteam</p>
+              <div className="social-links" style={{marginTop: '1rem'}}>
+                <p><strong>Follow Us:</strong></p>
+                <a href="https://www.instagram.com/quadrohairteam" target="_blank" rel="noopener noreferrer" className="social-link">
+                  📱 Instagram: @quadrohairteam
+                </a>
+                <a href="https://www.facebook.com/quadrohairteam" target="_blank" rel="noopener noreferrer" className="social-link">
+                  📘 Facebook: @quadrohairteam
+                </a>
+              </div>
             </div>
           </div>
           <div className="footer-bottom">
